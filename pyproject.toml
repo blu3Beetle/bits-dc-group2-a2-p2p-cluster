@@ -1,0 +1,9 @@
+[project]
+name = "bits-dc-group2-a2-p2p-cluster"
+version = "0.1.0"
+description = "Distributed resource sharing and processing using peer-to-peer and cluster computing"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.uv]
+package = false

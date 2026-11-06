@@ -1,0 +1,17 @@
+{
+  "nodes": {
+    "peer1":   { "role": "peer",   "host": "127.0.0.1", "port": 6001 },
+    "peer2":   { "role": "peer",   "host": "127.0.0.1", "port": 6002 },
+    "peer3":   { "role": "peer",   "host": "127.0.0.1", "port": 6003 },
+    "peer4":   { "role": "peer",   "host": "127.0.0.1", "port": 6004 },
+    "master":  { "role": "master", "host": "127.0.0.1", "port": 6100 },
+    "worker1": { "role": "worker", "host": "127.0.0.1", "port": 6201 },
+    "worker2": { "role": "worker", "host": "127.0.0.1", "port": 6202 },
+    "worker3": { "role": "worker", "host": "127.0.0.1", "port": 6203 }
+  },
+  "seeds": ["peer1", "peer2"],
+  "timing": {
+    "heartbeat_interval_s": 1.0,
+    "failure_timeout_s": 3.5
+  }
+}

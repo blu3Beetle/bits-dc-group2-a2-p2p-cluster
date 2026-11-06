@@ -1,0 +1,4 @@
+# The team develops on Windows and macOS but runs on the Linux lab VM.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
