@@ -5,7 +5,7 @@ import logging
 import signal
 import threading
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from common.config import Config, load_config
 from common.logger import get_logger
@@ -22,6 +22,7 @@ class NodeContext:
     ep: Endpoint
     members: MembershipTable
     log: object
+    stop_requested: threading.Event = field(default_factory=threading.Event)
 
     @property
     def incarnation(self):
@@ -36,7 +37,18 @@ def node_arg_parser(description):
     parser.add_argument("--host", help="override the configured host")
     parser.add_argument("--config", help="path to a topology file")
     parser.add_argument("--verbose", action="store_true", help="log every message sent and received")
+    # Marks args as coming from a real entry point, so build_node() takes over
+    # Ctrl+C and SIGTERM. Tests that build nodes in-process leave this unset.
+    parser.set_defaults(handle_signals=True)
     return parser
+
+
+def _install_stop_handlers(event):
+    def request_stop(_signum, _frame):
+        event.set()
+
+    signal.signal(signal.SIGINT, request_stop)
+    signal.signal(signal.SIGTERM, request_stop)
 
 
 def build_node(args, role):
@@ -54,21 +66,22 @@ def build_node(args, role):
 
     ep.on_any(lambda msg: members.touch(msg["sender"]))
     ep.on_disconnect(members.mark_dead)
-    return NodeContext(args.id, role, cfg, ep, members, log)
+    ctx = NodeContext(args.id, role, cfg, ep, members, log)
+
+    # Installed here, before the node starts, so a stop signal that arrives
+    # while it starts up still gives a graceful shutdown. If they were only
+    # installed in run_until_stopped(), the default handler would kill it.
+    if getattr(args, "handle_signals", False):
+        _install_stop_handlers(ctx.stop_requested)
+    return ctx
 
 
 def run_until_stopped(ctx, on_stop=None):
     """Block until Ctrl+C or SIGTERM, then run on_stop and close the endpoint."""
-    stop = threading.Event()
-
-    def request_stop(_signum, _frame):
-        stop.set()
-
-    signal.signal(signal.SIGINT, request_stop)
-    signal.signal(signal.SIGTERM, request_stop)
+    _install_stop_handlers(ctx.stop_requested)
 
     # A timed wait, because an untimed one ignores Ctrl+C on Windows.
-    while not stop.wait(0.2):
+    while not ctx.stop_requested.wait(0.2):
         pass
 
     ctx.log.info("shutting down")
