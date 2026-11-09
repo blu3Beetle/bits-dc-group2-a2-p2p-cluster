@@ -109,7 +109,9 @@ class Bridge:
 
     def on_job_accepted(self, msg):
         ctx = self.ctx
-        payload = msg.payload
+        # Messages are dicts (see common/messages.py), not objects.
+        payload = msg["payload"]
+        sender = msg["sender"]
         job_id = payload["job_id"]
         task_count = payload["task_count"]
 
@@ -119,7 +121,7 @@ class Bridge:
                 ctx.log.warning(
                     "[BRIDGE] JOB_ACCEPTED from '%s' for unknown job %s "
                     "(not submitted by this bridge); ignored",
-                    msg.sender, job_id,
+                    sender, job_id,
                 )
                 return
             job["status"] = "RUNNING"
@@ -131,12 +133,13 @@ class Bridge:
             "[BRIDGE] STEP 2/3 accepted: master '%s' accepted job %s and split "
             "it into %s task(s) for the workers (acknowledged in %.3fs). "
             "Job is now RUNNING on the cluster; waiting for JOB_RESULT.",
-            msg.sender, job_id, task_count, wait_s,
+            sender, job_id, task_count, wait_s,
         )
 
     def on_job_result(self, msg):
         ctx = self.ctx
-        payload = msg.payload
+        payload = msg["payload"]
+        sender = msg["sender"]
         job_id = payload["job_id"]
         status = payload["status"]
         result = payload["result"]
@@ -148,7 +151,7 @@ class Bridge:
                 ctx.log.warning(
                     "[BRIDGE] JOB_RESULT from '%s' for unknown job %s "
                     "(not submitted by this bridge); ignored",
-                    msg.sender, job_id,
+                    sender, job_id,
                 )
                 return
             job["status"] = "DONE" if str(status).lower() in ("done", "ok", "success", "completed") else "FAILED"

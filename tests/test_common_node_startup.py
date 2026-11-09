@@ -31,8 +31,11 @@ class NodeStartupTests(unittest.TestCase):
             for module, node_id in NODES:
                 with self.subTest(module=module):
                     process = self.start(module, node_id, log_dir)
-                    line = process.stdout.readline()
-                    self.assertIn("listening on", line)
+                    # Nodes may log setup lines (such as the bridge's) first.
+                    lines = []
+                    while len(lines) < 5 and not any("listening on" in l for l in lines):
+                        lines.append(process.stdout.readline())
+                    self.assertIn("listening on", lines[-1], lines)
                     process.terminate()
                     process.wait(timeout=5)
                     self.assertTrue(os.path.exists(os.path.join(log_dir, node_id + ".log")))
