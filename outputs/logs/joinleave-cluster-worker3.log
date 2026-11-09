@@ -1,0 +1,10 @@
+2026-11-09 17:34:22.321 [worker3] INFO    listening on 127.0.0.1:6203
+2026-11-09 17:34:22.321 [worker3] INFO    membership started: role=worker incarnation=1794245662320 watching=master
+2026-11-09 17:34:22.527 [worker3] INFO    channel open worker3 -> master
+2026-11-09 17:34:22.527 [worker3] INFO    sent JOIN to master
+2026-11-09 17:34:22.528 [worker3] INFO    channel open master -> worker3
+2026-11-09 17:34:22.529 [worker3] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-09 17:34:22.529 [worker3] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-09 17:34:26.398 [worker3] INFO    shutting down
+2026-11-09 17:34:26.399 [worker3] INFO    membership stopped: sent LEAVE to ['master']
+2026-11-09 17:34:26.399 [worker3] INFO    stopped

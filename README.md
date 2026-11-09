@@ -57,7 +57,8 @@ Request flow:
 | `cluster/master.py` | Task queue, dispatch, result collection, parallel execution proof | Kashif |
 | `cluster/worker.py` | Task execution and result return | Abhirup |
 | `joinleave/service.py` | Node join, heartbeat, leave and failure detection, used by every node | Sohail |
-| `tests/` | Unit and integration tests | Sohail (common tests: Anirudh) |
+| `demo/join_leave_demo.py` | Scripted node addition and removal demo with measured timings | Sohail |
+| `tests/` | Unit and integration tests | Sohail (common: Anirudh, peer: Sri Harsha) |
 | `docs/INTERFACES.md` | Team contract: message formats and how the parts fit | Anirudh |
 | `docs/GROUP-2-DRAFT.md` | Draft of the submission document | Anirudh |
 | `outputs/` | Logs and screenshots kept as evidence | All |
@@ -81,6 +82,19 @@ python3 -m peer.peer_node  --id peer4
 ```
 
 Nodes can start in any order: a node keeps retrying its JOIN until the node it joins is up.
+
+Each peer started in a terminal has a console. Type `help` for the full list; the main commands are:
+
+| Command | What it does |
+|---|---|
+| `peers` | Live peers this node knows |
+| `registry` | Who holds which resource |
+| `find dataset-c` | Search the overlay and fetch from the first holder |
+| `get dataset-d` | Fetch directly if the holder is known, otherwise search |
+| `submit <kind> <json>` | Send a job to the cluster through the bridge |
+| `stats` | Message counters |
+
+peer1 to peer4 start with `dataset-a` to `dataset-d`.
 
 Useful options:
 
@@ -152,6 +166,35 @@ MEMBER LEFT worker3 (worker): graceful leave. Alive workers: ['worker1', 'worker
 
 The same works for peers: start `peer5` with `--port 6005` to add one, or stop any peer to remove it. The remaining peers keep sharing resources, even when a seed peer is gone.
 
+### Scripted demo with timings
+
+`demo/join_leave_demo.py` runs the whole add/remove sequence and measures, from the nodes' own logs, how quickly the others notice each change:
+
+```bash
+python3 -m demo.join_leave_demo p2p        # peers
+python3 -m demo.join_leave_demo cluster    # master and workers
+python3 -m demo.join_leave_demo all
+```
+
+Stop any running nodes first, because the demo uses the configured ports. It needs Linux or macOS.
+
+| Scenario | Steps |
+|---|---|
+| `p2p` | 4 peers form the overlay; peer5 joins and fetches dataset-b; seed peer2 is killed; peer6 joins and still gets dataset-b from peer5's copy; peer4 leaves with Ctrl+C; dataset-d, which had no copy, is no longer found |
+| `cluster` | master and 3 workers start; worker4 joins; worker2 is killed; worker1 is frozen with SIGSTOP and detected by timeout, then resumed with SIGCONT; worker3 leaves with Ctrl+C |
+
+A typical run on one machine:
+
+| Event | Detected in |
+|---|---|
+| New peer known by all peers | 15 ms |
+| New worker known by the master | 44 ms, including process start-up |
+| Crash (`kill -9`), peer or worker | under 1 ms |
+| Graceful leave (Ctrl+C) | under 1 ms |
+| Hang (`SIGSTOP`) | 3.65 s, set by `failure_timeout_s` |
+
+Logs and a summary are saved in `outputs/logs/` as `joinleave-<scenario>-*`.
+
 ## Tests
 
 Run the whole suite:
@@ -169,6 +212,7 @@ python3 -m unittest tests.test_joinleave -v
 | File | What it covers |
 |---|---|
 | `tests/test_joinleave.py` | Join, late join on a new port, graceful leave, crash, silent node, restart, master restart, 4-peer discovery, late peer, seed peer crash |
+| `tests/test_peer.py` | Peer discovery, gossip, resource registry, query and fetch, replication, runtime sharing |
 | `tests/test_common_membership.py` | Membership table rules: ALIVE, DEAD, LEFT and incarnations |
 | `tests/test_common_messages.py` | Message schema validation |
 | `tests/test_common_transport.py` | TCP framing, ordering, reconnects and disconnect reporting |

@@ -1,0 +1,13 @@
+2026-11-09 17:34:22.611 [worker4] INFO    listening on 127.0.0.1:6204
+2026-11-09 17:34:22.611 [worker4] INFO    membership started: role=worker incarnation=1794245662610 watching=master
+2026-11-09 17:34:22.611 [worker4] INFO    channel open worker4 -> master
+2026-11-09 17:34:22.611 [worker4] INFO    sent JOIN to master
+2026-11-09 17:34:22.612 [worker4] INFO    channel open master -> worker4
+2026-11-09 17:34:22.612 [worker4] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-09 17:34:22.612 [worker4] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-09 17:34:26.957 [worker4] INFO    shutting down
+2026-11-09 17:34:26.957 [worker4] INFO    membership stopped: sent LEAVE to ['master']
+2026-11-09 17:34:26.958 [worker4] INFO    LEAVE from master: graceful shutdown
+2026-11-09 17:34:26.959 [worker4] WARNING MEMBER LEFT master (master): graceful leave. Alive masters: []
+2026-11-09 17:34:26.959 [worker4] WARNING no live masters left, will JOIN again
+2026-11-09 17:34:26.959 [worker4] INFO    stopped

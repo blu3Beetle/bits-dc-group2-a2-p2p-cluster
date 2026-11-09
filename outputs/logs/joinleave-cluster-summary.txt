@@ -1,0 +1,41 @@
+Join/leave demo: cluster scenario, run 2026-11-09 17:34:26
+#### Join/leave demo: cluster ####
+
+== 1. Start the master and 3 workers
+   started master as process 11
+   started worker1 as process 12
+   started worker2 as process 13
+   started worker3 as process 14
+   -> 3 workers joined the master: 239 ms
+
+== 2. ADD: worker4 joins at runtime on port 6204 (not in the config)
+   started worker4 as process 43
+   -> worker4 known by the master: 44 ms  (includes process start-up)
+
+== 3. REMOVE by crash: kill -9 worker2
+   kill -9 worker2 (pid 13)
+   -> worker2 crash detected by the master: <1 ms  (TCP channel closed)
+
+== 4. REMOVE by hang: SIGSTOP worker1 (frozen, socket still open)
+   SIGSTOP worker1 (pid 12)
+   -> worker1 hang detected by the master: 3.65 s  (heartbeat timeout, failure_timeout_s = 3.5)
+
+== 5. worker1 resumes (SIGCONT): it was not really dead
+   SIGCONT worker1 (pid 12)
+   -> worker1 back in the master's live set: <1 ms  (its next message revives it)
+
+== 6. REMOVE gracefully: Ctrl+C on worker3
+   Ctrl+C worker3 (pid 14)
+   -> worker3 LEAVE seen by the master: <1 ms  (LEAVE message, recorded as LEFT not FAILED)
+
+== 7. Final state
+   master: ['worker1', 'worker4']
+   requeue calls logged by the master: none yet (requeue_worker_tasks is Kashif's part)
+
+Measured
+  3 workers joined the master                                   239 ms  
+  worker4 known by the master                                    44 ms  includes process start-up
+  worker2 crash detected by the master                           <1 ms  TCP channel closed
+  worker1 hang detected by the master                           3.65 s  heartbeat timeout, failure_timeout_s = 3.5
+  worker1 back in the master's live set                          <1 ms  its next message revives it
+  worker3 LEAVE seen by the master                               <1 ms  LEAVE message, recorded as LEFT not FAILED

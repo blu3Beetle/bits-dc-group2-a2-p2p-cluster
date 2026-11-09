@@ -1,0 +1,32 @@
+2026-11-09 17:34:22.324 [master] INFO    listening on 127.0.0.1:6100
+2026-11-09 17:34:22.324 [master] INFO    membership started: role=master incarnation=1794245662324 watching=worker
+2026-11-09 17:34:22.324 [master] INFO    channel open worker1 -> master
+2026-11-09 17:34:22.325 [master] INFO    channel open worker2 -> master
+2026-11-09 17:34:22.325 [master] INFO    MEMBER JOINED worker2 (worker). Alive workers: ['worker2']
+2026-11-09 17:34:22.325 [master] INFO    channel open master -> worker2
+2026-11-09 17:34:22.325 [master] INFO    JOIN from worker2 (worker at 127.0.0.1:6202), sent JOIN_ACK
+2026-11-09 17:34:22.325 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker2']
+2026-11-09 17:34:22.325 [master] INFO    channel open master -> worker1
+2026-11-09 17:34:22.325 [master] INFO    JOIN from worker1 (worker at 127.0.0.1:6201), sent JOIN_ACK
+2026-11-09 17:34:22.527 [master] INFO    channel open worker3 -> master
+2026-11-09 17:34:22.528 [master] INFO    MEMBER JOINED worker3 (worker). Alive workers: ['worker1', 'worker2', 'worker3']
+2026-11-09 17:34:22.528 [master] INFO    channel open master -> worker3
+2026-11-09 17:34:22.528 [master] INFO    JOIN from worker3 (worker at 127.0.0.1:6203), sent JOIN_ACK
+2026-11-09 17:34:22.611 [master] INFO    channel open worker4 -> master
+2026-11-09 17:34:22.611 [master] INFO    MEMBER JOINED worker4 (worker). Alive workers: ['worker1', 'worker2', 'worker3', 'worker4']
+2026-11-09 17:34:22.612 [master] INFO    channel open master -> worker4
+2026-11-09 17:34:22.612 [master] INFO    JOIN from worker4 (worker at 127.0.0.1:6204), sent JOIN_ACK
+2026-11-09 17:34:22.619 [master] INFO    channel closed worker2 -> master
+2026-11-09 17:34:22.619 [master] WARNING MEMBER FAILED worker2 (worker): crashed or silent, last heard 0.3s ago. Alive workers: ['worker1', 'worker3', 'worker4']
+2026-11-09 17:34:26.329 [master] WARNING MEMBER FAILED worker1 (worker): crashed or silent, last heard 4.0s ago. Alive workers: ['worker3', 'worker4']
+2026-11-09 17:34:26.343 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker3', 'worker4']
+2026-11-09 17:34:26.399 [master] INFO    LEAVE from worker3: graceful shutdown
+2026-11-09 17:34:26.399 [master] WARNING MEMBER LEFT worker3 (worker): graceful leave. Alive workers: ['worker1', 'worker4']
+2026-11-09 17:34:26.399 [master] INFO    channel closed worker3 -> master
+2026-11-09 17:34:26.957 [master] INFO    shutting down
+2026-11-09 17:34:26.958 [master] INFO    LEAVE from worker1: graceful shutdown
+2026-11-09 17:34:26.958 [master] WARNING MEMBER LEFT worker1 (worker): graceful leave. Alive workers: ['worker4']
+2026-11-09 17:34:26.958 [master] INFO    LEAVE from worker4: graceful shutdown
+2026-11-09 17:34:26.958 [master] WARNING MEMBER LEFT worker4 (worker): graceful leave. Alive workers: []
+2026-11-09 17:34:26.958 [master] INFO    membership stopped: sent LEAVE to ['worker1', 'worker4']
+2026-11-09 17:34:26.959 [master] INFO    stopped
