@@ -1,0 +1,40 @@
+2026-11-10 18:46:58.253 [worker2] INFO    listening on 127.0.0.1:6202
+2026-11-10 18:46:58.253 [worker2] INFO    membership started: role=worker incarnation=1794316618253 watching=master
+2026-11-10 18:46:58.254 [worker2] INFO    channel open worker2 -> master
+2026-11-10 18:46:58.254 [worker2] INFO    sent JOIN to master
+2026-11-10 18:46:58.255 [worker2] INFO    channel open master -> worker2
+2026-11-10 18:46:58.255 [worker2] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-10 18:46:58.255 [worker2] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-10 18:46:58.278 [worker2] INFO    TASK START peer1-77d81ea2-t2 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:46:58.465 [worker2] INFO    TASK END   peer1-77d81ea2-t2 (job peer1-77d81ea2) SUCCESS in 0.187s, result 13440
+2026-11-10 18:46:58.465 [worker2] INFO    TASK START peer1-77d81ea2-t4 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:46:58.725 [worker2] INFO    TASK END   peer1-77d81ea2-t4 (job peer1-77d81ea2) SUCCESS in 0.259s, result 12532
+2026-11-10 18:46:58.726 [worker2] INFO    TASK START peer1-77d81ea2-t6 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:46:59.036 [worker2] INFO    TASK END   peer1-77d81ea2-t6 (job peer1-77d81ea2) SUCCESS in 0.311s, result 12079
+2026-11-10 18:46:59.037 [worker2] INFO    TASK START peer1-77d81ea2-t8 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:46:59.402 [worker2] INFO    TASK END   peer1-77d81ea2-t8 (job peer1-77d81ea2) SUCCESS in 0.365s, result 11852
+2026-11-10 18:46:59.403 [worker2] INFO    TASK START peer1-77d81ea2-t10 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:46:59.814 [worker2] INFO    TASK END   peer1-77d81ea2-t10 (job peer1-77d81ea2) SUCCESS in 0.412s, result 11641
+2026-11-10 18:46:59.815 [worker2] INFO    TASK START peer1-77d81ea2-t12 (job peer1-77d81ea2, kind count_primes)
+2026-11-10 18:47:00.269 [worker2] INFO    TASK END   peer1-77d81ea2-t12 (job peer1-77d81ea2) SUCCESS in 0.454s, result 11533
+2026-11-10 18:47:00.328 [worker2] INFO    TASK START peer1-5c005ba1-t2 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:00.541 [worker2] INFO    TASK END   peer1-5c005ba1-t2 (job peer1-5c005ba1) SUCCESS in 0.213s, result 13440
+2026-11-10 18:47:00.541 [worker2] INFO    TASK START peer1-5c005ba1-t5 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:00.836 [worker2] INFO    TASK END   peer1-5c005ba1-t5 (job peer1-5c005ba1) SUCCESS in 0.295s, result 12349
+2026-11-10 18:47:00.837 [worker2] INFO    TASK START peer1-5c005ba1-t8 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:01.211 [worker2] INFO    TASK END   peer1-5c005ba1-t8 (job peer1-5c005ba1) SUCCESS in 0.374s, result 11852
+2026-11-10 18:47:01.211 [worker2] INFO    TASK START peer1-5c005ba1-t11 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:01.653 [worker2] INFO    TASK END   peer1-5c005ba1-t11 (job peer1-5c005ba1) SUCCESS in 0.442s, result 11604
+2026-11-10 18:47:01.768 [worker2] INFO    TASK START peer1-de860276-t2 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:01.959 [worker2] INFO    TASK END   peer1-de860276-t2 (job peer1-de860276) SUCCESS in 0.191s, result 13440
+2026-11-10 18:47:01.959 [worker2] INFO    TASK START peer1-de860276-t5 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:02.254 [worker2] INFO    TASK END   peer1-de860276-t5 (job peer1-de860276) SUCCESS in 0.294s, result 12349
+2026-11-10 18:47:02.254 [worker2] INFO    TASK START peer1-de860276-t6 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:02.566 [worker2] INFO    TASK END   peer1-de860276-t6 (job peer1-de860276) SUCCESS in 0.312s, result 12079
+2026-11-10 18:47:02.567 [worker2] INFO    TASK START peer1-de860276-t9 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:02.956 [worker2] INFO    TASK END   peer1-de860276-t9 (job peer1-de860276) SUCCESS in 0.389s, result 11772
+2026-11-10 18:47:02.956 [worker2] INFO    TASK START peer1-de860276-t11 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:03.392 [worker2] INFO    TASK END   peer1-de860276-t11 (job peer1-de860276) SUCCESS in 0.436s, result 11604
+2026-11-10 18:47:03.752 [worker2] INFO    shutting down
+2026-11-10 18:47:03.752 [worker2] INFO    membership stopped: sent LEAVE to ['master']
+2026-11-10 18:47:03.752 [worker2] INFO    stopped
