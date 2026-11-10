@@ -7,7 +7,7 @@
     "peer4":   { "role": "peer",   "host": "10.3.21.242", "port": 6004 },
     "worker1": { "role": "worker", "host": "10.3.21.242", "port": 6201 },
     "worker2": { "role": "worker", "host": "10.3.21.17",  "port": 6202 },
-    "worker3": { "role": "worker", "host": "10.3.21.17",  "port": 6203 }
+    "worker3": { "role": "worker", "host": "10.3.20.241", "port": 6203 }
   },
   "seeds": ["peer1", "peer3"],
   "timing": {
