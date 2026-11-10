@@ -1,0 +1,192 @@
+2026-11-10 18:46:54.368 [master] INFO    listening on 127.0.0.1:6100
+2026-11-10 18:46:54.368 [master] INFO    membership started: role=master incarnation=1794316614367 watching=worker
+2026-11-10 18:46:54.368 [master] INFO    master ready: job kinds count_primes, sum, word_count, 2 task(s) per worker by default
+2026-11-10 18:46:54.411 [master] INFO    channel open worker1 -> master
+2026-11-10 18:46:54.411 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1']
+2026-11-10 18:46:54.411 [master] INFO    channel open master -> worker1
+2026-11-10 18:46:54.412 [master] INFO    JOIN from worker1 (worker at 127.0.0.1:6201), sent JOIN_ACK
+2026-11-10 18:46:54.449 [master] INFO    channel open peer1 -> master
+2026-11-10 18:46:54.449 [master] INFO    JOB RECEIVED peer1-fd9dd4cf from peer1: kind=count_primes params={'start': 0, 'end': 2000000, 'tasks': 12} -> 12 task(s), 1 live worker(s)
+2026-11-10 18:46:54.450 [master] INFO    channel open master -> peer1
+2026-11-10 18:46:54.450 [master] INFO    DISPATCH peer1-fd9dd4cf-t1 -> worker1 (count_primes {'start': 0, 'end': 166667}), 11 task(s) still queued
+2026-11-10 18:46:54.562 [master] INFO    RESULT peer1-fd9dd4cf-t1 from worker1 = 15225 (worker time 0.112s), job peer1-fd9dd4cf 1/12 done
+2026-11-10 18:46:54.562 [master] INFO    DISPATCH peer1-fd9dd4cf-t2 -> worker1 (count_primes {'start': 166667, 'end': 333334}), 10 task(s) still queued
+2026-11-10 18:46:54.743 [master] INFO    RESULT peer1-fd9dd4cf-t2 from worker1 = 13440 (worker time 0.181s), job peer1-fd9dd4cf 2/12 done
+2026-11-10 18:46:54.744 [master] INFO    DISPATCH peer1-fd9dd4cf-t3 -> worker1 (count_primes {'start': 333334, 'end': 500001}), 9 task(s) still queued
+2026-11-10 18:46:54.965 [master] INFO    RESULT peer1-fd9dd4cf-t3 from worker1 = 12873 (worker time 0.221s), job peer1-fd9dd4cf 3/12 done
+2026-11-10 18:46:54.965 [master] INFO    DISPATCH peer1-fd9dd4cf-t4 -> worker1 (count_primes {'start': 500001, 'end': 666668}), 8 task(s) still queued
+2026-11-10 18:46:55.221 [master] INFO    RESULT peer1-fd9dd4cf-t4 from worker1 = 12532 (worker time 0.255s), job peer1-fd9dd4cf 4/12 done
+2026-11-10 18:46:55.221 [master] INFO    DISPATCH peer1-fd9dd4cf-t5 -> worker1 (count_primes {'start': 666668, 'end': 833335}), 7 task(s) still queued
+2026-11-10 18:46:55.522 [master] INFO    RESULT peer1-fd9dd4cf-t5 from worker1 = 12349 (worker time 0.301s), job peer1-fd9dd4cf 5/12 done
+2026-11-10 18:46:55.522 [master] INFO    DISPATCH peer1-fd9dd4cf-t6 -> worker1 (count_primes {'start': 833335, 'end': 1000002}), 6 task(s) still queued
+2026-11-10 18:46:55.829 [master] INFO    RESULT peer1-fd9dd4cf-t6 from worker1 = 12079 (worker time 0.306s), job peer1-fd9dd4cf 6/12 done
+2026-11-10 18:46:55.829 [master] INFO    DISPATCH peer1-fd9dd4cf-t7 -> worker1 (count_primes {'start': 1000002, 'end': 1166669}), 5 task(s) still queued
+2026-11-10 18:46:56.162 [master] INFO    RESULT peer1-fd9dd4cf-t7 from worker1 = 12033 (worker time 0.332s), job peer1-fd9dd4cf 7/12 done
+2026-11-10 18:46:56.162 [master] INFO    DISPATCH peer1-fd9dd4cf-t8 -> worker1 (count_primes {'start': 1166669, 'end': 1333336}), 4 task(s) still queued
+2026-11-10 18:46:56.526 [master] INFO    RESULT peer1-fd9dd4cf-t8 from worker1 = 11852 (worker time 0.363s), job peer1-fd9dd4cf 8/12 done
+2026-11-10 18:46:56.526 [master] INFO    DISPATCH peer1-fd9dd4cf-t9 -> worker1 (count_primes {'start': 1333336, 'end': 1500002}), 3 task(s) still queued
+2026-11-10 18:46:56.915 [master] INFO    RESULT peer1-fd9dd4cf-t9 from worker1 = 11772 (worker time 0.388s), job peer1-fd9dd4cf 9/12 done
+2026-11-10 18:46:56.915 [master] INFO    DISPATCH peer1-fd9dd4cf-t10 -> worker1 (count_primes {'start': 1500002, 'end': 1666668}), 2 task(s) still queued
+2026-11-10 18:46:57.328 [master] INFO    RESULT peer1-fd9dd4cf-t10 from worker1 = 11641 (worker time 0.412s), job peer1-fd9dd4cf 10/12 done
+2026-11-10 18:46:57.328 [master] INFO    DISPATCH peer1-fd9dd4cf-t11 -> worker1 (count_primes {'start': 1666668, 'end': 1833334}), 1 task(s) still queued
+2026-11-10 18:46:57.764 [master] INFO    RESULT peer1-fd9dd4cf-t11 from worker1 = 11604 (worker time 0.435s), job peer1-fd9dd4cf 11/12 done
+2026-11-10 18:46:57.764 [master] INFO    DISPATCH peer1-fd9dd4cf-t12 -> worker1 (count_primes {'start': 1833334, 'end': 2000000}), 0 task(s) still queued
+2026-11-10 18:46:58.220 [master] INFO    RESULT peer1-fd9dd4cf-t12 from worker1 = 11533 (worker time 0.455s), job peer1-fd9dd4cf 12/12 done
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF job peer1-fd9dd4cf: timeline (seconds since JOB_SUBMIT)
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t1            worker1      0.000 ->   0.113
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t2            worker1      0.113 ->   0.294
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t3            worker1      0.294 ->   0.516
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t4            worker1      0.516 ->   0.771
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t5            worker1      0.771 ->   1.073
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t6            worker1      1.073 ->   1.380
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t7            worker1      1.380 ->   1.712
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t8            worker1      1.712 ->   2.077
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t9            worker1      2.077 ->   2.466
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t10           worker1      2.466 ->   2.878
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t11           worker1      2.879 ->   3.315
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF   peer1-fd9dd4cf-t12           worker1      3.315 ->   3.771
+2026-11-10 18:46:58.220 [master] INFO    PARALLEL PROOF job peer1-fd9dd4cf: 12 task(s) on 1 worker(s) {'worker1': 12}, max 1 running at once, task time 3.769s in wall time 3.771s = 1.00x parallelism
+2026-11-10 18:46:58.220 [master] INFO    JOB DONE peer1-fd9dd4cf: status=SUCCESS result=148933 elapsed=3.771s
+2026-11-10 18:46:58.254 [master] INFO    channel open worker2 -> master
+2026-11-10 18:46:58.254 [master] INFO    MEMBER JOINED worker2 (worker). Alive workers: ['worker1', 'worker2']
+2026-11-10 18:46:58.255 [master] INFO    channel open master -> worker2
+2026-11-10 18:46:58.255 [master] INFO    JOIN from worker2 (worker at 127.0.0.1:6202), sent JOIN_ACK
+2026-11-10 18:46:58.278 [master] INFO    JOB RECEIVED peer1-77d81ea2 from peer1: kind=count_primes params={'start': 0, 'end': 2000000, 'tasks': 12} -> 12 task(s), 2 live worker(s)
+2026-11-10 18:46:58.278 [master] INFO    DISPATCH peer1-77d81ea2-t1 -> worker1 (count_primes {'start': 0, 'end': 166667}), 11 task(s) still queued
+2026-11-10 18:46:58.278 [master] INFO    DISPATCH peer1-77d81ea2-t2 -> worker2 (count_primes {'start': 166667, 'end': 333334}), 10 task(s) still queued
+2026-11-10 18:46:58.395 [master] INFO    RESULT peer1-77d81ea2-t1 from worker1 = 15225 (worker time 0.117s), job peer1-77d81ea2 1/12 done
+2026-11-10 18:46:58.395 [master] INFO    DISPATCH peer1-77d81ea2-t3 -> worker1 (count_primes {'start': 333334, 'end': 500001}), 9 task(s) still queued
+2026-11-10 18:46:58.465 [master] INFO    RESULT peer1-77d81ea2-t2 from worker2 = 13440 (worker time 0.187s), job peer1-77d81ea2 2/12 done
+2026-11-10 18:46:58.465 [master] INFO    DISPATCH peer1-77d81ea2-t4 -> worker2 (count_primes {'start': 500001, 'end': 666668}), 8 task(s) still queued
+2026-11-10 18:46:58.624 [master] INFO    RESULT peer1-77d81ea2-t3 from worker1 = 12873 (worker time 0.228s), job peer1-77d81ea2 3/12 done
+2026-11-10 18:46:58.624 [master] INFO    DISPATCH peer1-77d81ea2-t5 -> worker1 (count_primes {'start': 666668, 'end': 833335}), 7 task(s) still queued
+2026-11-10 18:46:58.725 [master] INFO    RESULT peer1-77d81ea2-t4 from worker2 = 12532 (worker time 0.259s), job peer1-77d81ea2 4/12 done
+2026-11-10 18:46:58.725 [master] INFO    DISPATCH peer1-77d81ea2-t6 -> worker2 (count_primes {'start': 833335, 'end': 1000002}), 6 task(s) still queued
+2026-11-10 18:46:58.913 [master] INFO    RESULT peer1-77d81ea2-t5 from worker1 = 12349 (worker time 0.288s), job peer1-77d81ea2 5/12 done
+2026-11-10 18:46:58.913 [master] INFO    DISPATCH peer1-77d81ea2-t7 -> worker1 (count_primes {'start': 1000002, 'end': 1166669}), 5 task(s) still queued
+2026-11-10 18:46:59.037 [master] INFO    RESULT peer1-77d81ea2-t6 from worker2 = 12079 (worker time 0.311s), job peer1-77d81ea2 6/12 done
+2026-11-10 18:46:59.037 [master] INFO    DISPATCH peer1-77d81ea2-t8 -> worker2 (count_primes {'start': 1166669, 'end': 1333336}), 4 task(s) still queued
+2026-11-10 18:46:59.255 [master] INFO    RESULT peer1-77d81ea2-t7 from worker1 = 12033 (worker time 0.342s), job peer1-77d81ea2 7/12 done
+2026-11-10 18:46:59.255 [master] INFO    DISPATCH peer1-77d81ea2-t9 -> worker1 (count_primes {'start': 1333336, 'end': 1500002}), 3 task(s) still queued
+2026-11-10 18:46:59.402 [master] INFO    RESULT peer1-77d81ea2-t8 from worker2 = 11852 (worker time 0.365s), job peer1-77d81ea2 8/12 done
+2026-11-10 18:46:59.402 [master] INFO    DISPATCH peer1-77d81ea2-t10 -> worker2 (count_primes {'start': 1500002, 'end': 1666668}), 2 task(s) still queued
+2026-11-10 18:46:59.652 [master] INFO    RESULT peer1-77d81ea2-t9 from worker1 = 11772 (worker time 0.396s), job peer1-77d81ea2 9/12 done
+2026-11-10 18:46:59.652 [master] INFO    DISPATCH peer1-77d81ea2-t11 -> worker1 (count_primes {'start': 1666668, 'end': 1833334}), 1 task(s) still queued
+2026-11-10 18:46:59.815 [master] INFO    RESULT peer1-77d81ea2-t10 from worker2 = 11641 (worker time 0.412s), job peer1-77d81ea2 10/12 done
+2026-11-10 18:46:59.815 [master] INFO    DISPATCH peer1-77d81ea2-t12 -> worker2 (count_primes {'start': 1833334, 'end': 2000000}), 0 task(s) still queued
+2026-11-10 18:47:00.097 [master] INFO    RESULT peer1-77d81ea2-t11 from worker1 = 11604 (worker time 0.445s), job peer1-77d81ea2 11/12 done
+2026-11-10 18:47:00.270 [master] INFO    RESULT peer1-77d81ea2-t12 from worker2 = 11533 (worker time 0.454s), job peer1-77d81ea2 12/12 done
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF job peer1-77d81ea2: timeline (seconds since JOB_SUBMIT)
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t1            worker1      0.000 ->   0.118
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t2            worker2      0.000 ->   0.188
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t3            worker1      0.118 ->   0.346
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t4            worker2      0.188 ->   0.448
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t5            worker1      0.346 ->   0.635
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t6            worker2      0.448 ->   0.759
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t7            worker1      0.635 ->   0.977
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t8            worker2      0.759 ->   1.125
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t9            worker1      0.977 ->   1.374
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t10           worker2      1.125 ->   1.537
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t11           worker1      1.374 ->   1.820
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF   peer1-77d81ea2-t12           worker2      1.537 ->   1.992
+2026-11-10 18:47:00.270 [master] INFO    PARALLEL PROOF job peer1-77d81ea2: 12 task(s) on 2 worker(s) {'worker1': 6, 'worker2': 6}, max 2 running at once, task time 3.811s in wall time 1.992s = 1.91x parallelism
+2026-11-10 18:47:00.270 [master] INFO    JOB DONE peer1-77d81ea2: status=SUCCESS result=148933 elapsed=1.992s
+2026-11-10 18:47:00.304 [master] INFO    channel open worker3 -> master
+2026-11-10 18:47:00.304 [master] INFO    MEMBER JOINED worker3 (worker). Alive workers: ['worker1', 'worker2', 'worker3']
+2026-11-10 18:47:00.304 [master] INFO    channel open master -> worker3
+2026-11-10 18:47:00.304 [master] INFO    JOIN from worker3 (worker at 127.0.0.1:6203), sent JOIN_ACK
+2026-11-10 18:47:00.327 [master] INFO    JOB RECEIVED peer1-5c005ba1 from peer1: kind=count_primes params={'start': 0, 'end': 2000000, 'tasks': 12} -> 12 task(s), 3 live worker(s)
+2026-11-10 18:47:00.328 [master] INFO    DISPATCH peer1-5c005ba1-t1 -> worker1 (count_primes {'start': 0, 'end': 166667}), 11 task(s) still queued
+2026-11-10 18:47:00.328 [master] INFO    DISPATCH peer1-5c005ba1-t2 -> worker2 (count_primes {'start': 166667, 'end': 333334}), 10 task(s) still queued
+2026-11-10 18:47:00.328 [master] INFO    DISPATCH peer1-5c005ba1-t3 -> worker3 (count_primes {'start': 333334, 'end': 500001}), 9 task(s) still queued
+2026-11-10 18:47:00.447 [master] INFO    RESULT peer1-5c005ba1-t1 from worker1 = 15225 (worker time 0.119s), job peer1-5c005ba1 1/12 done
+2026-11-10 18:47:00.447 [master] INFO    DISPATCH peer1-5c005ba1-t4 -> worker1 (count_primes {'start': 500001, 'end': 666668}), 8 task(s) still queued
+2026-11-10 18:47:00.541 [master] INFO    RESULT peer1-5c005ba1-t2 from worker2 = 13440 (worker time 0.213s), job peer1-5c005ba1 2/12 done
+2026-11-10 18:47:00.541 [master] INFO    DISPATCH peer1-5c005ba1-t5 -> worker2 (count_primes {'start': 666668, 'end': 833335}), 7 task(s) still queued
+2026-11-10 18:47:00.584 [master] INFO    RESULT peer1-5c005ba1-t3 from worker3 = 12873 (worker time 0.256s), job peer1-5c005ba1 3/12 done
+2026-11-10 18:47:00.584 [master] INFO    DISPATCH peer1-5c005ba1-t6 -> worker3 (count_primes {'start': 833335, 'end': 1000002}), 6 task(s) still queued
+2026-11-10 18:47:00.739 [master] INFO    RESULT peer1-5c005ba1-t4 from worker1 = 12532 (worker time 0.291s), job peer1-5c005ba1 4/12 done
+2026-11-10 18:47:00.739 [master] INFO    DISPATCH peer1-5c005ba1-t7 -> worker1 (count_primes {'start': 1000002, 'end': 1166669}), 5 task(s) still queued
+2026-11-10 18:47:00.837 [master] INFO    RESULT peer1-5c005ba1-t5 from worker2 = 12349 (worker time 0.295s), job peer1-5c005ba1 5/12 done
+2026-11-10 18:47:00.837 [master] INFO    DISPATCH peer1-5c005ba1-t8 -> worker2 (count_primes {'start': 1166669, 'end': 1333336}), 4 task(s) still queued
+2026-11-10 18:47:00.905 [master] INFO    RESULT peer1-5c005ba1-t6 from worker3 = 12079 (worker time 0.321s), job peer1-5c005ba1 6/12 done
+2026-11-10 18:47:00.905 [master] INFO    DISPATCH peer1-5c005ba1-t9 -> worker3 (count_primes {'start': 1333336, 'end': 1500002}), 3 task(s) still queued
+2026-11-10 18:47:01.088 [master] INFO    RESULT peer1-5c005ba1-t7 from worker1 = 12033 (worker time 0.349s), job peer1-5c005ba1 7/12 done
+2026-11-10 18:47:01.088 [master] INFO    DISPATCH peer1-5c005ba1-t10 -> worker1 (count_primes {'start': 1500002, 'end': 1666668}), 2 task(s) still queued
+2026-11-10 18:47:01.211 [master] INFO    RESULT peer1-5c005ba1-t8 from worker2 = 11852 (worker time 0.374s), job peer1-5c005ba1 8/12 done
+2026-11-10 18:47:01.211 [master] INFO    DISPATCH peer1-5c005ba1-t11 -> worker2 (count_primes {'start': 1666668, 'end': 1833334}), 1 task(s) still queued
+2026-11-10 18:47:01.305 [master] INFO    RESULT peer1-5c005ba1-t9 from worker3 = 11772 (worker time 0.399s), job peer1-5c005ba1 9/12 done
+2026-11-10 18:47:01.305 [master] INFO    DISPATCH peer1-5c005ba1-t12 -> worker3 (count_primes {'start': 1833334, 'end': 2000000}), 0 task(s) still queued
+2026-11-10 18:47:01.519 [master] INFO    RESULT peer1-5c005ba1-t10 from worker1 = 11641 (worker time 0.430s), job peer1-5c005ba1 10/12 done
+2026-11-10 18:47:01.654 [master] INFO    RESULT peer1-5c005ba1-t11 from worker2 = 11604 (worker time 0.442s), job peer1-5c005ba1 11/12 done
+2026-11-10 18:47:01.767 [master] INFO    RESULT peer1-5c005ba1-t12 from worker3 = 11533 (worker time 0.461s), job peer1-5c005ba1 12/12 done
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF job peer1-5c005ba1: timeline (seconds since JOB_SUBMIT)
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t1            worker1      0.000 ->   0.120
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t2            worker2      0.000 ->   0.214
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t3            worker3      0.000 ->   0.256
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t4            worker1      0.120 ->   0.412
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t5            worker2      0.214 ->   0.509
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t6            worker3      0.256 ->   0.578
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t7            worker1      0.412 ->   0.761
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t8            worker2      0.509 ->   0.884
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t9            worker3      0.578 ->   0.978
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t10           worker1      0.761 ->   1.191
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t11           worker2      0.884 ->   1.326
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF   peer1-5c005ba1-t12           worker3      0.978 ->   1.439
+2026-11-10 18:47:01.767 [master] INFO    PARALLEL PROOF job peer1-5c005ba1: 12 task(s) on 3 worker(s) {'worker1': 4, 'worker2': 4, 'worker3': 4}, max 3 running at once, task time 3.956s in wall time 1.439s = 2.75x parallelism
+2026-11-10 18:47:01.767 [master] INFO    JOB DONE peer1-5c005ba1: status=SUCCESS result=148933 elapsed=1.439s
+2026-11-10 18:47:01.768 [master] INFO    JOB RECEIVED peer1-de860276 from peer1: kind=count_primes params={'start': 0, 'end': 2000000, 'tasks': 12} -> 12 task(s), 3 live worker(s)
+2026-11-10 18:47:01.768 [master] INFO    DISPATCH peer1-de860276-t1 -> worker1 (count_primes {'start': 0, 'end': 166667}), 11 task(s) still queued
+2026-11-10 18:47:01.768 [master] INFO    DISPATCH peer1-de860276-t2 -> worker2 (count_primes {'start': 166667, 'end': 333334}), 10 task(s) still queued
+2026-11-10 18:47:01.768 [master] INFO    DISPATCH peer1-de860276-t3 -> worker3 (count_primes {'start': 333334, 'end': 500001}), 9 task(s) still queued
+2026-11-10 18:47:01.887 [master] INFO    RESULT peer1-de860276-t1 from worker1 = 15225 (worker time 0.119s), job peer1-de860276 1/12 done
+2026-11-10 18:47:01.887 [master] INFO    DISPATCH peer1-de860276-t4 -> worker1 (count_primes {'start': 500001, 'end': 666668}), 8 task(s) still queued
+2026-11-10 18:47:01.959 [master] INFO    RESULT peer1-de860276-t2 from worker2 = 13440 (worker time 0.191s), job peer1-de860276 2/12 done
+2026-11-10 18:47:01.959 [master] INFO    DISPATCH peer1-de860276-t5 -> worker2 (count_primes {'start': 666668, 'end': 833335}), 7 task(s) still queued
+2026-11-10 18:47:02.002 [master] INFO    RESULT peer1-de860276-t3 from worker3 = 12873 (worker time 0.234s), job peer1-de860276 3/12 done
+2026-11-10 18:47:02.002 [master] INFO    DISPATCH peer1-de860276-t6 -> worker3 (count_primes {'start': 833335, 'end': 1000002}), 6 task(s) still queued
+2026-11-10 18:47:02.153 [master] INFO    RESULT peer1-de860276-t4 from worker1 = 12532 (worker time 0.265s), job peer1-de860276 4/12 done
+2026-11-10 18:47:02.153 [master] INFO    DISPATCH peer1-de860276-t7 -> worker1 (count_primes {'start': 1000002, 'end': 1166669}), 5 task(s) still queued
+2026-11-10 18:47:02.245 [master] INFO    channel closed worker3 -> master
+2026-11-10 18:47:02.246 [master] WARNING MEMBER FAILED worker3 (worker): crashed or silent, last heard 0.2s ago. Alive workers: ['worker1', 'worker2']
+2026-11-10 18:47:02.246 [master] WARNING REQUEUE 1 task(s) of lost worker worker3: peer1-de860276-t6
+2026-11-10 18:47:02.254 [master] INFO    RESULT peer1-de860276-t5 from worker2 = 12349 (worker time 0.294s), job peer1-de860276 5/12 done
+2026-11-10 18:47:02.254 [master] INFO    DISPATCH peer1-de860276-t6 -> worker2 (count_primes {'start': 833335, 'end': 1000002}), 5 task(s) still queued
+2026-11-10 18:47:02.496 [master] INFO    RESULT peer1-de860276-t7 from worker1 = 12033 (worker time 0.343s), job peer1-de860276 6/12 done
+2026-11-10 18:47:02.496 [master] INFO    DISPATCH peer1-de860276-t8 -> worker1 (count_primes {'start': 1166669, 'end': 1333336}), 4 task(s) still queued
+2026-11-10 18:47:02.566 [master] INFO    RESULT peer1-de860276-t6 from worker2 = 12079 (worker time 0.312s), job peer1-de860276 7/12 done
+2026-11-10 18:47:02.566 [master] INFO    DISPATCH peer1-de860276-t9 -> worker2 (count_primes {'start': 1333336, 'end': 1500002}), 3 task(s) still queued
+2026-11-10 18:47:02.868 [master] INFO    RESULT peer1-de860276-t8 from worker1 = 11852 (worker time 0.372s), job peer1-de860276 8/12 done
+2026-11-10 18:47:02.869 [master] INFO    DISPATCH peer1-de860276-t10 -> worker1 (count_primes {'start': 1500002, 'end': 1666668}), 2 task(s) still queued
+2026-11-10 18:47:02.956 [master] INFO    RESULT peer1-de860276-t9 from worker2 = 11772 (worker time 0.389s), job peer1-de860276 9/12 done
+2026-11-10 18:47:02.956 [master] INFO    DISPATCH peer1-de860276-t11 -> worker2 (count_primes {'start': 1666668, 'end': 1833334}), 1 task(s) still queued
+2026-11-10 18:47:03.290 [master] INFO    RESULT peer1-de860276-t10 from worker1 = 11641 (worker time 0.420s), job peer1-de860276 10/12 done
+2026-11-10 18:47:03.290 [master] INFO    DISPATCH peer1-de860276-t12 -> worker1 (count_primes {'start': 1833334, 'end': 2000000}), 0 task(s) still queued
+2026-11-10 18:47:03.393 [master] INFO    RESULT peer1-de860276-t11 from worker2 = 11604 (worker time 0.436s), job peer1-de860276 11/12 done
+2026-11-10 18:47:03.750 [master] INFO    RESULT peer1-de860276-t12 from worker1 = 11533 (worker time 0.460s), job peer1-de860276 12/12 done
+2026-11-10 18:47:03.750 [master] INFO    PARALLEL PROOF job peer1-de860276: timeline (seconds since JOB_SUBMIT)
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t1            worker1      0.000 ->   0.120
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t2            worker2      0.000 ->   0.192
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t3            worker3      0.000 ->   0.234
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t4            worker1      0.120 ->   0.385
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t5            worker2      0.192 ->   0.486
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t6            worker2      0.486 ->   0.799
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t7            worker1      0.385 ->   0.728
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t8            worker1      0.728 ->   1.101
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t9            worker2      0.799 ->   1.188
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t10           worker1      1.101 ->   1.522
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t11           worker2      1.189 ->   1.625
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF   peer1-de860276-t12           worker1      1.522 ->   1.983
+2026-11-10 18:47:03.751 [master] INFO    PARALLEL PROOF job peer1-de860276: 12 task(s) on 3 worker(s) {'worker1': 6, 'worker2': 5, 'worker3': 1}, max 3 running at once, task time 3.841s in wall time 1.983s = 1.94x parallelism
+2026-11-10 18:47:03.751 [master] INFO    JOB DONE peer1-de860276: status=SUCCESS result=148933 elapsed=1.983s
+2026-11-10 18:47:03.752 [master] INFO    shutting down
+2026-11-10 18:47:03.752 [master] INFO    channel closed peer1 -> master
+2026-11-10 18:47:03.752 [master] INFO    membership stopped: sent LEAVE to ['worker1', 'worker2']
+2026-11-10 18:47:03.752 [master] INFO    LEAVE from worker1: graceful shutdown
+2026-11-10 18:47:03.752 [master] WARNING MEMBER LEFT worker1 (worker): graceful leave. Alive workers: ['worker2']
+2026-11-10 18:47:03.752 [master] INFO    worker worker1 lost while idle; nothing to requeue
+2026-11-10 18:47:03.752 [master] INFO    LEAVE from worker2: graceful shutdown
+2026-11-10 18:47:03.752 [master] WARNING MEMBER LEFT worker2 (worker): graceful leave. Alive workers: []
+2026-11-10 18:47:03.752 [master] INFO    worker worker2 lost while idle; nothing to requeue
+2026-11-10 18:47:03.752 [master] INFO    channel closed worker2 -> master
+2026-11-10 18:47:03.753 [master] INFO    stopped

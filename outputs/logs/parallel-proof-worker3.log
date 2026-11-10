@@ -1,0 +1,18 @@
+2026-11-10 18:47:00.303 [worker3] INFO    listening on 127.0.0.1:6203
+2026-11-10 18:47:00.303 [worker3] INFO    membership started: role=worker incarnation=1794316620303 watching=master
+2026-11-10 18:47:00.304 [worker3] INFO    channel open worker3 -> master
+2026-11-10 18:47:00.304 [worker3] INFO    sent JOIN to master
+2026-11-10 18:47:00.304 [worker3] INFO    channel open master -> worker3
+2026-11-10 18:47:00.304 [worker3] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-10 18:47:00.304 [worker3] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-10 18:47:00.328 [worker3] INFO    TASK START peer1-5c005ba1-t3 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:00.583 [worker3] INFO    TASK END   peer1-5c005ba1-t3 (job peer1-5c005ba1) SUCCESS in 0.256s, result 12873
+2026-11-10 18:47:00.584 [worker3] INFO    TASK START peer1-5c005ba1-t6 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:00.905 [worker3] INFO    TASK END   peer1-5c005ba1-t6 (job peer1-5c005ba1) SUCCESS in 0.321s, result 12079
+2026-11-10 18:47:00.906 [worker3] INFO    TASK START peer1-5c005ba1-t9 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:01.305 [worker3] INFO    TASK END   peer1-5c005ba1-t9 (job peer1-5c005ba1) SUCCESS in 0.399s, result 11772
+2026-11-10 18:47:01.306 [worker3] INFO    TASK START peer1-5c005ba1-t12 (job peer1-5c005ba1, kind count_primes)
+2026-11-10 18:47:01.766 [worker3] INFO    TASK END   peer1-5c005ba1-t12 (job peer1-5c005ba1) SUCCESS in 0.461s, result 11533
+2026-11-10 18:47:01.768 [worker3] INFO    TASK START peer1-de860276-t3 (job peer1-de860276, kind count_primes)
+2026-11-10 18:47:02.002 [worker3] INFO    TASK END   peer1-de860276-t3 (job peer1-de860276) SUCCESS in 0.234s, result 12873
+2026-11-10 18:47:02.002 [worker3] INFO    TASK START peer1-de860276-t6 (job peer1-de860276, kind count_primes)
