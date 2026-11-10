@@ -93,11 +93,22 @@ All automated tests run with `python3 -m unittest discover -s tests -t .`. The m
 | 19 | Fetch a resource, then its original holder leaves | The fetched copy is still available | Pass |
 | 20 | Share a resource at runtime | Other peers can find it | Pass |
 
-**Cluster** (Kashif, Abhirup)
+**Cluster worker** (`tests/test_worker.py`, against a real master endpoint)
 
 | # | Test case | Expected result | Result |
 |---|---|---|---|
-| 21 | `[PENDING: master and worker test cases]` | | |
+| 21 | Assign `sum`, `word_count` and `count_primes` tasks | Correct result, status SUCCESS, with task, job and worker ids | Pass |
+| 22 | Assign an unknown task kind, or a task with bad params | Status FAILED with the error; the worker keeps taking tasks | Pass |
+| 23 | Assign a long task, then a short one to the same worker | The short one returns first: tasks do not block each other | Pass |
+| 24 | Keep a worker busy with a long task | The master never marks it failed: heartbeats continue | Pass |
+| 25 | Assign tasks to two workers | Each task is done by the worker it was sent to | Pass |
+| 26 | Crash a worker during a task | The master marks it DEAD and is notified to requeue; no result arrives | Pass |
+
+**Cluster master** (Kashif)
+
+| # | Test case | Expected result | Result |
+|---|---|---|---|
+| 27 | `[PENDING: master test cases: job split, dispatch, result collection, requeue, parallel speedup]` | | |
 
 **Demo scenarios with measured timings** (`demo/join_leave_demo.py`)
 

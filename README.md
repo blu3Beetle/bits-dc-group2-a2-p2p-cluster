@@ -213,6 +213,7 @@ python3 -m unittest tests.test_joinleave -v
 |---|---|
 | `tests/test_joinleave.py` | Join, late join on a new port, graceful leave, crash, silent node, restart, master restart, 4-peer discovery, late peer, seed peer crash |
 | `tests/test_peer.py` | Peer discovery, gossip, resource registry, query and fetch, replication, runtime sharing |
+| `tests/test_worker.py` | Worker task kinds, failures, long tasks not blocking, crash during a task |
 | `tests/test_common_membership.py` | Membership table rules: ALIVE, DEAD, LEFT and incarnations |
 | `tests/test_common_messages.py` | Message schema validation |
 | `tests/test_common_transport.py` | TCP framing, ordering, reconnects and disconnect reporting |
