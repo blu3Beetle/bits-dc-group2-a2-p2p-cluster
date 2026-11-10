@@ -27,10 +27,19 @@ WAIT_S = 5
 _run = itertools.count(1)
 
 
+_given_ports = set()
+
+
 def free_port():
-    with socket.socket() as sock:
-        sock.bind(("127.0.0.1", 0))
-        return sock.getsockname()[1]
+    """A free port not handed out before in this run. The OS can return the
+    same port twice once it is released, which gave two nodes one address."""
+    while True:
+        with socket.socket() as sock:
+            sock.bind(("127.0.0.1", 0))
+            port = sock.getsockname()[1]
+        if port not in _given_ports:
+            _given_ports.add(port)
+            return port
 
 
 def wait_until(condition, timeout=WAIT_S):
