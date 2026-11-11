@@ -1,10 +1,18 @@
-2026-11-09 17:34:22.321 [worker3] INFO    listening on 127.0.0.1:6203
-2026-11-09 17:34:22.321 [worker3] INFO    membership started: role=worker incarnation=1794245662320 watching=master
-2026-11-09 17:34:22.527 [worker3] INFO    channel open worker3 -> master
-2026-11-09 17:34:22.527 [worker3] INFO    sent JOIN to master
-2026-11-09 17:34:22.528 [worker3] INFO    channel open master -> worker3
-2026-11-09 17:34:22.529 [worker3] INFO    MEMBER JOINED master (master). Alive masters: ['master']
-2026-11-09 17:34:22.529 [worker3] INFO    JOIN_ACK from master: now tracking ['master']
-2026-11-09 17:34:26.398 [worker3] INFO    shutting down
-2026-11-09 17:34:26.399 [worker3] INFO    membership stopped: sent LEAVE to ['master']
-2026-11-09 17:34:26.399 [worker3] INFO    stopped
+2026-11-11 08:26:46.257 [worker3] INFO    listening on 127.0.0.1:6203
+2026-11-11 08:26:46.258 [worker3] INFO    membership started: role=worker incarnation=1794365806257 watching=master
+2026-11-11 08:26:46.258 [worker3] INFO    channel open worker3 -> master
+2026-11-11 08:26:46.258 [worker3] INFO    sent JOIN to master
+2026-11-11 08:26:46.258 [worker3] INFO    channel open master -> worker3
+2026-11-11 08:26:46.258 [worker3] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-11 08:26:46.258 [worker3] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-11 08:26:46.365 [worker3] INFO    TASK START peer1-0aafbabb-t3 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:46.807 [worker3] INFO    TASK END   peer1-0aafbabb-t3 (job peer1-0aafbabb) SUCCESS in 0.442s, result 12873
+2026-11-11 08:26:46.808 [worker3] INFO    TASK START peer1-0aafbabb-t2 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:47.135 [worker3] INFO    TASK END   peer1-0aafbabb-t2 (job peer1-0aafbabb) SUCCESS in 0.327s, result 13440
+2026-11-11 08:26:47.135 [worker3] INFO    TASK START peer1-0aafbabb-t7 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:47.782 [worker3] INFO    TASK END   peer1-0aafbabb-t7 (job peer1-0aafbabb) SUCCESS in 0.646s, result 12033
+2026-11-11 08:26:47.782 [worker3] INFO    TASK START peer1-0aafbabb-t10 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:48.560 [worker3] INFO    TASK END   peer1-0aafbabb-t10 (job peer1-0aafbabb) SUCCESS in 0.778s, result 11641
+2026-11-11 08:26:52.351 [worker3] INFO    shutting down
+2026-11-11 08:26:52.351 [worker3] INFO    membership stopped: sent LEAVE to ['master']
+2026-11-11 08:26:52.351 [worker3] INFO    stopped

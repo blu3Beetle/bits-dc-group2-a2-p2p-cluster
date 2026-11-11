@@ -1,13 +1,23 @@
-2026-11-09 17:34:22.324 [worker1] INFO    listening on 127.0.0.1:6201
-2026-11-09 17:34:22.324 [worker1] INFO    channel open worker1 -> master
-2026-11-09 17:34:22.324 [worker1] INFO    membership started: role=worker incarnation=1794245662324 watching=master
-2026-11-09 17:34:22.325 [worker1] INFO    sent JOIN to master
-2026-11-09 17:34:22.325 [worker1] INFO    channel open master -> worker1
-2026-11-09 17:34:22.325 [worker1] INFO    MEMBER JOINED master (master). Alive masters: ['master']
-2026-11-09 17:34:22.325 [worker1] INFO    JOIN_ACK from master: now tracking ['master']
-2026-11-09 17:34:26.957 [worker1] INFO    shutting down
-2026-11-09 17:34:26.957 [worker1] INFO    membership stopped: sent LEAVE to ['master']
-2026-11-09 17:34:26.959 [worker1] INFO    LEAVE from master: graceful shutdown
-2026-11-09 17:34:26.959 [worker1] WARNING MEMBER LEFT master (master): graceful leave. Alive masters: []
-2026-11-09 17:34:26.959 [worker1] WARNING no live masters left, will JOIN again
-2026-11-09 17:34:26.959 [worker1] INFO    stopped
+2026-11-11 08:26:46.257 [worker1] INFO    listening on 127.0.0.1:6201
+2026-11-11 08:26:46.258 [worker1] INFO    membership started: role=worker incarnation=1794365806257 watching=master
+2026-11-11 08:26:46.258 [worker1] INFO    channel open worker1 -> master
+2026-11-11 08:26:46.258 [worker1] INFO    sent JOIN to master
+2026-11-11 08:26:46.259 [worker1] INFO    channel open master -> worker1
+2026-11-11 08:26:46.259 [worker1] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-11 08:26:46.259 [worker1] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-11 08:26:46.365 [worker1] INFO    TASK START peer1-0aafbabb-t1 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:46.594 [worker1] INFO    TASK END   peer1-0aafbabb-t1 (job peer1-0aafbabb) SUCCESS in 0.229s, result 15225
+2026-11-11 08:26:46.595 [worker1] INFO    TASK START peer1-0aafbabb-t5 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:47.186 [worker1] INFO    TASK END   peer1-0aafbabb-t5 (job peer1-0aafbabb) SUCCESS in 0.591s, result 12349
+2026-11-11 08:26:47.186 [worker1] INFO    TASK START peer1-0aafbabb-t8 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:47.919 [worker1] INFO    TASK END   peer1-0aafbabb-t8 (job peer1-0aafbabb) SUCCESS in 0.733s, result 11852
+2026-11-11 08:26:47.919 [worker1] INFO    TASK START peer1-0aafbabb-t11 (job peer1-0aafbabb, kind count_primes)
+2026-11-11 08:26:48.769 [worker1] INFO    TASK END   peer1-0aafbabb-t11 (job peer1-0aafbabb) SUCCESS in 0.850s, result 11604
+2026-11-11 08:26:52.295 [worker1] WARNING MEMBER FAILED master (master): crashed or silent, last heard 4.0s ago. Alive masters: []
+2026-11-11 08:26:52.296 [worker1] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-11 08:26:54.462 [worker1] INFO    shutting down
+2026-11-11 08:26:54.463 [worker1] INFO    LEAVE from master: graceful shutdown
+2026-11-11 08:26:54.463 [worker1] INFO    membership stopped: sent LEAVE to ['master']
+2026-11-11 08:26:54.463 [worker1] WARNING MEMBER LEFT master (master): graceful leave. Alive masters: []
+2026-11-11 08:26:54.464 [worker1] WARNING no live masters left, will JOIN again
+2026-11-11 08:26:54.464 [worker1] INFO    stopped

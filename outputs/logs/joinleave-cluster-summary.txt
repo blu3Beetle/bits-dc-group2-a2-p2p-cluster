@@ -1,41 +1,49 @@
-Join/leave demo: cluster scenario, run 2026-11-09 17:34:26
+Join/leave demo: cluster scenario, run 2026-11-11 08:26:55
 #### Join/leave demo: cluster ####
 
 == 1. Start the master and 3 workers
-   started master as process 11
-   started worker1 as process 12
-   started worker2 as process 13
-   started worker3 as process 14
-   -> 3 workers joined the master: 239 ms
+   started master as process 1798
+   started worker1 as process 1799
+   started worker2 as process 1800
+   started worker3 as process 1801
+   -> 3 workers joined the master: 37 ms
 
 == 2. ADD: worker4 joins at runtime on port 6204 (not in the config)
-   started worker4 as process 43
-   -> worker4 known by the master: 44 ms  (includes process start-up)
+   started worker4 as process 1802
+   -> worker4 known by the master: 29 ms  (includes process start-up)
 
-== 3. REMOVE by crash: kill -9 worker2
-   kill -9 worker2 (pid 13)
+== 3. REMOVE by crash, mid-job: peer1 submits a job, then kill -9 worker2 while it runs a task
+   started peer1 on port None (in this script)
+   peer1 submitted job peer1-0aafbabb: count_primes over [0, 2,000,000) in 12 tasks
+   kill -9 worker2 (pid 1800)
    -> worker2 crash detected by the master: <1 ms  (TCP channel closed)
+   -> worker2's unfinished task requeued: <1 ms
+   -> job finished despite the crash: 2.64 s  (status DONE, result 148933)
 
 == 4. REMOVE by hang: SIGSTOP worker1 (frozen, socket still open)
-   SIGSTOP worker1 (pid 12)
-   -> worker1 hang detected by the master: 3.65 s  (heartbeat timeout, failure_timeout_s = 3.5)
+   SIGSTOP worker1 (pid 1799)
+   -> worker1 hang detected by the master: 3.29 s  (heartbeat timeout, failure_timeout_s = 3.5)
 
 == 5. worker1 resumes (SIGCONT): it was not really dead
-   SIGCONT worker1 (pid 12)
+   SIGCONT worker1 (pid 1799)
    -> worker1 back in the master's live set: <1 ms  (its next message revives it)
 
 == 6. REMOVE gracefully: Ctrl+C on worker3
-   Ctrl+C worker3 (pid 14)
+   Ctrl+C worker3 (pid 1801)
    -> worker3 LEAVE seen by the master: <1 ms  (LEAVE message, recorded as LEFT not FAILED)
 
 == 7. Final state
    master: ['worker1', 'worker4']
-   requeue calls logged by the master: none yet (requeue_worker_tasks is Kashif's part)
+   master: REQUEUE 1 task(s) of lost worker worker2: peer1-0aafbabb-t2
+   master: worker worker1 lost while idle; nothing to requeue
+   master: worker worker3 lost while idle; nothing to requeue
 
 Measured
-  3 workers joined the master                                   239 ms  
-  worker4 known by the master                                    44 ms  includes process start-up
+  3 workers joined the master                                    37 ms  
+  worker4 known by the master                                    29 ms  includes process start-up
   worker2 crash detected by the master                           <1 ms  TCP channel closed
-  worker1 hang detected by the master                           3.65 s  heartbeat timeout, failure_timeout_s = 3.5
+  worker2's unfinished task requeued                             <1 ms  
+  job finished despite the crash                                2.64 s  status DONE, result 148933
+  worker1 hang detected by the master                           3.29 s  heartbeat timeout, failure_timeout_s = 3.5
   worker1 back in the master's live set                          <1 ms  its next message revives it
   worker3 LEAVE seen by the master                               <1 ms  LEAVE message, recorded as LEFT not FAILED

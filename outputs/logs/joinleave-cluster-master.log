@@ -1,32 +1,82 @@
-2026-11-09 17:34:22.324 [master] INFO    listening on 127.0.0.1:6100
-2026-11-09 17:34:22.324 [master] INFO    membership started: role=master incarnation=1794245662324 watching=worker
-2026-11-09 17:34:22.324 [master] INFO    channel open worker1 -> master
-2026-11-09 17:34:22.325 [master] INFO    channel open worker2 -> master
-2026-11-09 17:34:22.325 [master] INFO    MEMBER JOINED worker2 (worker). Alive workers: ['worker2']
-2026-11-09 17:34:22.325 [master] INFO    channel open master -> worker2
-2026-11-09 17:34:22.325 [master] INFO    JOIN from worker2 (worker at 127.0.0.1:6202), sent JOIN_ACK
-2026-11-09 17:34:22.325 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker2']
-2026-11-09 17:34:22.325 [master] INFO    channel open master -> worker1
-2026-11-09 17:34:22.325 [master] INFO    JOIN from worker1 (worker at 127.0.0.1:6201), sent JOIN_ACK
-2026-11-09 17:34:22.527 [master] INFO    channel open worker3 -> master
-2026-11-09 17:34:22.528 [master] INFO    MEMBER JOINED worker3 (worker). Alive workers: ['worker1', 'worker2', 'worker3']
-2026-11-09 17:34:22.528 [master] INFO    channel open master -> worker3
-2026-11-09 17:34:22.528 [master] INFO    JOIN from worker3 (worker at 127.0.0.1:6203), sent JOIN_ACK
-2026-11-09 17:34:22.611 [master] INFO    channel open worker4 -> master
-2026-11-09 17:34:22.611 [master] INFO    MEMBER JOINED worker4 (worker). Alive workers: ['worker1', 'worker2', 'worker3', 'worker4']
-2026-11-09 17:34:22.612 [master] INFO    channel open master -> worker4
-2026-11-09 17:34:22.612 [master] INFO    JOIN from worker4 (worker at 127.0.0.1:6204), sent JOIN_ACK
-2026-11-09 17:34:22.619 [master] INFO    channel closed worker2 -> master
-2026-11-09 17:34:22.619 [master] WARNING MEMBER FAILED worker2 (worker): crashed or silent, last heard 0.3s ago. Alive workers: ['worker1', 'worker3', 'worker4']
-2026-11-09 17:34:26.329 [master] WARNING MEMBER FAILED worker1 (worker): crashed or silent, last heard 4.0s ago. Alive workers: ['worker3', 'worker4']
-2026-11-09 17:34:26.343 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker3', 'worker4']
-2026-11-09 17:34:26.399 [master] INFO    LEAVE from worker3: graceful shutdown
-2026-11-09 17:34:26.399 [master] WARNING MEMBER LEFT worker3 (worker): graceful leave. Alive workers: ['worker1', 'worker4']
-2026-11-09 17:34:26.399 [master] INFO    channel closed worker3 -> master
-2026-11-09 17:34:26.957 [master] INFO    shutting down
-2026-11-09 17:34:26.958 [master] INFO    LEAVE from worker1: graceful shutdown
-2026-11-09 17:34:26.958 [master] WARNING MEMBER LEFT worker1 (worker): graceful leave. Alive workers: ['worker4']
-2026-11-09 17:34:26.958 [master] INFO    LEAVE from worker4: graceful shutdown
-2026-11-09 17:34:26.958 [master] WARNING MEMBER LEFT worker4 (worker): graceful leave. Alive workers: []
-2026-11-09 17:34:26.958 [master] INFO    membership stopped: sent LEAVE to ['worker1', 'worker4']
-2026-11-09 17:34:26.959 [master] INFO    stopped
+2026-11-11 08:26:46.257 [master] INFO    listening on 127.0.0.1:6100
+2026-11-11 08:26:46.258 [master] INFO    membership started: role=master incarnation=1794365806257 watching=worker
+2026-11-11 08:26:46.258 [master] INFO    master ready: job kinds count_primes, sum, word_count, 2 task(s) per worker by default
+2026-11-11 08:26:46.258 [master] INFO    channel open worker3 -> master
+2026-11-11 08:26:46.258 [master] INFO    MEMBER JOINED worker3 (worker). Alive workers: ['worker3']
+2026-11-11 08:26:46.258 [master] INFO    channel open worker1 -> master
+2026-11-11 08:26:46.258 [master] INFO    channel open worker2 -> master
+2026-11-11 08:26:46.258 [master] INFO    channel open master -> worker3
+2026-11-11 08:26:46.258 [master] INFO    JOIN from worker3 (worker at 127.0.0.1:6203), sent JOIN_ACK
+2026-11-11 08:26:46.258 [master] INFO    MEMBER JOINED worker2 (worker). Alive workers: ['worker2', 'worker3']
+2026-11-11 08:26:46.259 [master] INFO    channel open master -> worker2
+2026-11-11 08:26:46.259 [master] INFO    JOIN from worker2 (worker at 127.0.0.1:6202), sent JOIN_ACK
+2026-11-11 08:26:46.259 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker2', 'worker3']
+2026-11-11 08:26:46.259 [master] INFO    channel open master -> worker1
+2026-11-11 08:26:46.259 [master] INFO    JOIN from worker1 (worker at 127.0.0.1:6201), sent JOIN_ACK
+2026-11-11 08:26:46.315 [master] INFO    channel open worker4 -> master
+2026-11-11 08:26:46.315 [master] INFO    MEMBER JOINED worker4 (worker). Alive workers: ['worker1', 'worker2', 'worker3', 'worker4']
+2026-11-11 08:26:46.315 [master] INFO    channel open master -> worker4
+2026-11-11 08:26:46.315 [master] INFO    JOIN from worker4 (worker at 127.0.0.1:6204), sent JOIN_ACK
+2026-11-11 08:26:46.364 [master] INFO    channel open peer1 -> master
+2026-11-11 08:26:46.365 [master] INFO    JOB RECEIVED peer1-0aafbabb from peer1: kind=count_primes params={'start': 0, 'end': 2000000, 'tasks': 12} -> 12 task(s), 4 live worker(s)
+2026-11-11 08:26:46.365 [master] INFO    channel open master -> peer1
+2026-11-11 08:26:46.365 [master] INFO    DISPATCH peer1-0aafbabb-t1 -> worker1 (count_primes {'start': 0, 'end': 166667}), 11 task(s) still queued
+2026-11-11 08:26:46.365 [master] INFO    DISPATCH peer1-0aafbabb-t2 -> worker2 (count_primes {'start': 166667, 'end': 333334}), 10 task(s) still queued
+2026-11-11 08:26:46.365 [master] INFO    DISPATCH peer1-0aafbabb-t3 -> worker3 (count_primes {'start': 333334, 'end': 500001}), 9 task(s) still queued
+2026-11-11 08:26:46.365 [master] INFO    DISPATCH peer1-0aafbabb-t4 -> worker4 (count_primes {'start': 500001, 'end': 666668}), 8 task(s) still queued
+2026-11-11 08:26:46.594 [master] INFO    RESULT peer1-0aafbabb-t1 from worker1 = 15225 (worker time 0.229s), job peer1-0aafbabb 1/12 done
+2026-11-11 08:26:46.595 [master] INFO    DISPATCH peer1-0aafbabb-t5 -> worker1 (count_primes {'start': 666668, 'end': 833335}), 7 task(s) still queued
+2026-11-11 08:26:46.626 [master] INFO    channel closed worker2 -> master
+2026-11-11 08:26:46.626 [master] WARNING MEMBER FAILED worker2 (worker): crashed or silent, last heard 0.4s ago. Alive workers: ['worker1', 'worker3', 'worker4']
+2026-11-11 08:26:46.626 [master] WARNING REQUEUE 1 task(s) of lost worker worker2: peer1-0aafbabb-t2
+2026-11-11 08:26:46.807 [master] INFO    RESULT peer1-0aafbabb-t3 from worker3 = 12873 (worker time 0.442s), job peer1-0aafbabb 2/12 done
+2026-11-11 08:26:46.807 [master] INFO    DISPATCH peer1-0aafbabb-t2 -> worker3 (count_primes {'start': 166667, 'end': 333334}), 7 task(s) still queued
+2026-11-11 08:26:46.883 [master] INFO    RESULT peer1-0aafbabb-t4 from worker4 = 12532 (worker time 0.517s), job peer1-0aafbabb 3/12 done
+2026-11-11 08:26:46.883 [master] INFO    DISPATCH peer1-0aafbabb-t6 -> worker4 (count_primes {'start': 833335, 'end': 1000002}), 6 task(s) still queued
+2026-11-11 08:26:47.135 [master] INFO    RESULT peer1-0aafbabb-t2 from worker3 = 13440 (worker time 0.327s), job peer1-0aafbabb 4/12 done
+2026-11-11 08:26:47.135 [master] INFO    DISPATCH peer1-0aafbabb-t7 -> worker3 (count_primes {'start': 1000002, 'end': 1166669}), 5 task(s) still queued
+2026-11-11 08:26:47.186 [master] INFO    RESULT peer1-0aafbabb-t5 from worker1 = 12349 (worker time 0.591s), job peer1-0aafbabb 5/12 done
+2026-11-11 08:26:47.186 [master] INFO    DISPATCH peer1-0aafbabb-t8 -> worker1 (count_primes {'start': 1166669, 'end': 1333336}), 4 task(s) still queued
+2026-11-11 08:26:47.469 [master] INFO    RESULT peer1-0aafbabb-t6 from worker4 = 12079 (worker time 0.586s), job peer1-0aafbabb 6/12 done
+2026-11-11 08:26:47.469 [master] INFO    DISPATCH peer1-0aafbabb-t9 -> worker4 (count_primes {'start': 1333336, 'end': 1500002}), 3 task(s) still queued
+2026-11-11 08:26:47.782 [master] INFO    RESULT peer1-0aafbabb-t7 from worker3 = 12033 (worker time 0.646s), job peer1-0aafbabb 7/12 done
+2026-11-11 08:26:47.782 [master] INFO    DISPATCH peer1-0aafbabb-t10 -> worker3 (count_primes {'start': 1500002, 'end': 1666668}), 2 task(s) still queued
+2026-11-11 08:26:47.919 [master] INFO    RESULT peer1-0aafbabb-t8 from worker1 = 11852 (worker time 0.733s), job peer1-0aafbabb 8/12 done
+2026-11-11 08:26:47.919 [master] INFO    DISPATCH peer1-0aafbabb-t11 -> worker1 (count_primes {'start': 1666668, 'end': 1833334}), 1 task(s) still queued
+2026-11-11 08:26:48.184 [master] INFO    RESULT peer1-0aafbabb-t9 from worker4 = 11772 (worker time 0.715s), job peer1-0aafbabb 9/12 done
+2026-11-11 08:26:48.184 [master] INFO    DISPATCH peer1-0aafbabb-t12 -> worker4 (count_primes {'start': 1833334, 'end': 2000000}), 0 task(s) still queued
+2026-11-11 08:26:48.560 [master] INFO    RESULT peer1-0aafbabb-t10 from worker3 = 11641 (worker time 0.778s), job peer1-0aafbabb 10/12 done
+2026-11-11 08:26:48.769 [master] INFO    RESULT peer1-0aafbabb-t11 from worker1 = 11604 (worker time 0.850s), job peer1-0aafbabb 11/12 done
+2026-11-11 08:26:48.999 [master] INFO    RESULT peer1-0aafbabb-t12 from worker4 = 11533 (worker time 0.815s), job peer1-0aafbabb 12/12 done
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF job peer1-0aafbabb: timeline (seconds since JOB_SUBMIT)
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t1            worker1      0.000 ->   0.230
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t2            worker3      0.443 ->   0.770
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t3            worker3      0.000 ->   0.443
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t4            worker4      0.000 ->   0.518
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t5            worker1      0.230 ->   0.821
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t6            worker4      0.518 ->   1.104
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t7            worker3      0.770 ->   1.417
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t8            worker1      0.821 ->   1.554
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t9            worker4      1.105 ->   1.820
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t10           worker3      1.417 ->   2.195
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t11           worker1      1.554 ->   2.405
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF   peer1-0aafbabb-t12           worker4      1.820 ->   2.634
+2026-11-11 08:26:48.999 [master] INFO    PARALLEL PROOF job peer1-0aafbabb: 12 task(s) on 3 worker(s) {'worker1': 4, 'worker3': 4, 'worker4': 4}, max 3 running at once, task time 7.233s in wall time 2.634s = 2.75x parallelism
+2026-11-11 08:26:48.999 [master] INFO    JOB DONE peer1-0aafbabb: status=SUCCESS result=148933 elapsed=2.634s
+2026-11-11 08:26:52.290 [master] WARNING MEMBER FAILED worker1 (worker): crashed or silent, last heard 3.5s ago. Alive workers: ['worker3', 'worker4']
+2026-11-11 08:26:52.290 [master] INFO    worker worker1 lost while idle; nothing to requeue
+2026-11-11 08:26:52.295 [master] INFO    MEMBER JOINED worker1 (worker). Alive workers: ['worker1', 'worker3', 'worker4']
+2026-11-11 08:26:52.351 [master] INFO    LEAVE from worker3: graceful shutdown
+2026-11-11 08:26:52.351 [master] WARNING MEMBER LEFT worker3 (worker): graceful leave. Alive workers: ['worker1', 'worker4']
+2026-11-11 08:26:52.351 [master] INFO    worker worker3 lost while idle; nothing to requeue
+2026-11-11 08:26:52.351 [master] INFO    channel closed worker3 -> master
+2026-11-11 08:26:54.461 [master] INFO    channel closed peer1 -> master
+2026-11-11 08:26:54.462 [master] INFO    shutting down
+2026-11-11 08:26:54.462 [master] INFO    membership stopped: sent LEAVE to ['worker1', 'worker4']
+2026-11-11 08:26:54.463 [master] INFO    LEAVE from worker1: graceful shutdown
+2026-11-11 08:26:54.463 [master] WARNING MEMBER LEFT worker1 (worker): graceful leave. Alive workers: ['worker4']
+2026-11-11 08:26:54.464 [master] INFO    worker worker1 lost while idle; nothing to requeue
+2026-11-11 08:26:54.464 [master] INFO    LEAVE from worker4: graceful shutdown
+2026-11-11 08:26:54.464 [master] WARNING MEMBER LEFT worker4 (worker): graceful leave. Alive workers: []
+2026-11-11 08:26:54.464 [master] INFO    worker worker4 lost while idle; nothing to requeue
+2026-11-11 08:26:54.464 [master] INFO    stopped

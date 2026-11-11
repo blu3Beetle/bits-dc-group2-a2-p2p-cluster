@@ -104,11 +104,19 @@ All automated tests run with `python3 -m unittest discover -s tests -t .`. The m
 | 25 | Assign tasks to two workers | Each task is done by the worker it was sent to | Pass |
 | 26 | Crash a worker during a task | The master marks it DEAD and is notified to requeue; no result arrives | Pass |
 
-**Cluster master** (Kashif)
+**Cluster master** (`tests/test_master.py`, Kashif)
 
 | # | Test case | Expected result | Result |
 |---|---|---|---|
-| 27 | `[PENDING: master test cases: job split, dispatch, result collection, requeue, parallel speedup]` | | |
+| 27 | Split `count_primes`, `sum` and `word_count` jobs | Ranges and chunks cover every item exactly once; never more tasks than items | Pass |
+| 28 | Submit malformed jobs | Rejected, never accepted | Pass |
+| 29 | Submit `sum`, `word_count` and `count_primes` jobs | Split, dispatched, combined into one correct JOB_RESULT | Pass |
+| 30 | Run a job on several workers | Tasks run in parallel across workers | Pass |
+| 31 | Submit a job with no workers, then add one | The job waits, then runs | Pass |
+| 32 | Crash or stop a worker mid-job | Its unfinished tasks are requeued and the job still completes | Pass |
+| 33 | Add a worker mid-job | It is given tasks straight away | Pass |
+| 34 | Send a duplicate TASK_RESULT | Ignored | Pass |
+| 35 | A task fails | Retried; the job fails only after 3 failed attempts, and succeeds if a retry works | Pass |
 
 **Demo scenarios with measured timings** (`demo/join_leave_demo.py`)
 
@@ -122,7 +130,8 @@ All automated tests run with `python3 -m unittest discover -s tests -t .`. The m
 | D6 | Ctrl+C on peer4 | All remaining peers record LEFT | under 1 ms |
 | D7 | Search for dataset-d, whose only holder left | Not found | Not found, as expected |
 | D8 | worker4 joins the master at runtime | Added to live workers | 44 ms, including process start-up |
-| D9 | `kill -9` worker2; `SIGSTOP` worker1; then `SIGCONT` | Crash detected at once; hang detected by timeout; resumed worker is live again | under 1 ms; 3.65 s; under 1 ms |
+| D9 | `kill -9` worker2 while it runs a task of a 12-task job | Crash detected, its task requeued, job still correct | 3 ms to detect and requeue; job DONE, result 148933 |
+| D9b | `SIGSTOP` worker1, then `SIGCONT` | Hang detected by timeout; resumed worker is live again | 3.64 s; under 1 ms |
 | D10 | Ctrl+C on worker3 | The master records LEFT | under 1 ms |
 
 ## Node Addition and Removal Analysis
@@ -154,7 +163,7 @@ The hang case is the only one that needs the timeout, and it is the one that mat
 **Effect of removing a node.**
 - *P2P, data:* a resource survives a removal only if another peer holds a copy. dataset-b survived the crash of peer2 because peer5 had fetched it, so peer6 got it from peer5 2 ms later. dataset-d was lost when peer4 left, because no other peer had fetched it. Availability depends on replication, not on any central server.
 - *P2P, structure:* the remaining peers carry on with no reconfiguration. Losing a seed only affects nodes that join later, and only if every seed is down.
-- *Cluster, a worker:* capacity drops by one worker. The master is notified through `on_worker_lost`, so the worker's unfinished tasks can be sent to the remaining workers. `[PENDING: requeue measurement once Kashif's master runs jobs, e.g. job completion time with and without a worker killed mid-job]`
+- *Cluster, a worker:* capacity drops by one worker. The master is notified through `on_worker_lost` and puts the worker's unfinished tasks back on the queue for the remaining workers. Measured with `count_primes` over [0, 2,000,000) in 12 tasks: 1.439 s with 3 workers, and 1.983 s when worker3 was killed mid-job. Its task was requeued to worker2 and the result was the same (148,933). The job was slowed by the one task that had to run again, but it did not fail. `[UPDATE: lab VM numbers from the demo run]`
 - *Cluster, the master:* the cluster cannot accept or run jobs until the master is back. It is a single point of failure, which the P2P side does not have. When it restarts, the workers detect the loss and rejoin it on their own (test 10).
 
 **False suspicion.** A frozen worker (`SIGSTOP`) was declared dead after 3.65 s, but it was alive. When it resumed (`SIGCONT`), its next message put it back in the live set in under 1 ms. A shorter timeout detects failures faster but declares slow nodes dead more often. A worker wrongly declared dead may still return results for tasks the master has already reassigned, so the master must ignore duplicate `TASK_RESULT`s.
@@ -171,7 +180,7 @@ Both halves were built in this system and run on the same transport, so the comp
 | **Membership traffic** | Every peer heartbeats every other: P×(P−1) messages/s, plus gossip. Measured: 12 + 2 = 14/s for 4 peers. | Workers and master exchange heartbeats: 2×W messages/s. Measured: 6/s for 3 workers. |
 | **Resource sharing** | Each peer holds and serves its own resources. Found by flooding a query with a TTL; fetched in 1–2 ms. Copies made by fetching keep data available after a peer leaves. | Resources are compute capacity, handed out by the master. Workers hold no shared data; the master decides what each one runs. |
 | **Scalability** | No bottleneck node, but full-mesh heartbeats grow with P²: 10 peers would need about 95 messages/s. Larger overlays need partial views or gossip-only failure detection. | Grows linearly: 10 workers need 20 messages/s. The master becomes the limit, since every task and result passes through it. |
-| **Processing** | Each peer only processes its own requests; there is no way to split one large job across peers. | Designed for heavy work: the master splits a job into tasks that run in parallel. `[PENDING: speedup with 1, 2 and 3 workers from Kashif's parallel proof]` |
+| **Processing** | Each peer only processes its own requests; there is no way to split one large job across peers. | Designed for heavy work: the master splits a job into tasks that run in parallel. Measured (`count_primes`, 12 tasks): 1 worker 3.771 s, 2 workers 1.992 s (1.89×), 3 workers 1.439 s (2.62×). `[UPDATE: lab VM numbers]` |
 | **Fault tolerance** | No single point of failure. A crash was detected by every peer in under 1 ms, and the rest kept working. | A worker failure is absorbed by requeueing its tasks. The master is a single point of failure. |
 | **Joining** | A new peer needs any one seed; known by all peers in 15 ms. | A new worker needs only the master; usable in 44 ms. |
 

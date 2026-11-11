@@ -181,7 +181,7 @@ Stop any running nodes first, because the demo uses the configured ports. It nee
 | Scenario | Steps |
 |---|---|
 | `p2p` | 4 peers form the overlay; peer5 joins and fetches dataset-b; seed peer2 is killed; peer6 joins and still gets dataset-b from peer5's copy; peer4 leaves with Ctrl+C; dataset-d, which had no copy, is no longer found |
-| `cluster` | master and 3 workers start; worker4 joins; worker2 is killed; worker1 is frozen with SIGSTOP and detected by timeout, then resumed with SIGCONT; worker3 leaves with Ctrl+C |
+| `cluster` | master and 3 workers start; worker4 joins; peer1 submits a 12-task job and worker2 is killed mid-task, so its task is requeued and the job still completes; worker1 is frozen with SIGSTOP and detected by timeout, then resumed with SIGCONT; worker3 leaves with Ctrl+C |
 
 A typical run on one machine:
 

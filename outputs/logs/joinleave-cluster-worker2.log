@@ -1,7 +1,8 @@
-2026-11-09 17:34:22.324 [worker2] INFO    listening on 127.0.0.1:6202
-2026-11-09 17:34:22.324 [worker2] INFO    membership started: role=worker incarnation=1794245662324 watching=master
-2026-11-09 17:34:22.324 [worker2] INFO    channel open worker2 -> master
-2026-11-09 17:34:22.324 [worker2] INFO    sent JOIN to master
-2026-11-09 17:34:22.325 [worker2] INFO    channel open master -> worker2
-2026-11-09 17:34:22.325 [worker2] INFO    MEMBER JOINED master (master). Alive masters: ['master']
-2026-11-09 17:34:22.325 [worker2] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-11 08:26:46.257 [worker2] INFO    listening on 127.0.0.1:6202
+2026-11-11 08:26:46.258 [worker2] INFO    membership started: role=worker incarnation=1794365806257 watching=master
+2026-11-11 08:26:46.258 [worker2] INFO    channel open worker2 -> master
+2026-11-11 08:26:46.258 [worker2] INFO    sent JOIN to master
+2026-11-11 08:26:46.259 [worker2] INFO    channel open master -> worker2
+2026-11-11 08:26:46.259 [worker2] INFO    MEMBER JOINED master (master). Alive masters: ['master']
+2026-11-11 08:26:46.259 [worker2] INFO    JOIN_ACK from master: now tracking ['master']
+2026-11-11 08:26:46.365 [worker2] INFO    TASK START peer1-0aafbabb-t2 (job peer1-0aafbabb, kind count_primes)

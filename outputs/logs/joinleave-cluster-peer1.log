@@ -1,0 +1,13 @@
+2026-11-11 08:26:46.364 [peer1] INFO    [BRIDGE] peer1 ready: jobs go to master 'master', results come back here
+2026-11-11 08:26:46.364 [peer1] INFO    listening on 127.0.0.1:6001
+2026-11-11 08:26:46.364 [peer1] INFO    membership started: role=peer incarnation=1794365806356 watching=peer
+2026-11-11 08:26:46.364 [peer1] INFO    peer started, holding ['dataset-a', 'notes-peer1']
+2026-11-11 08:26:46.364 [peer1] INFO    [BRIDGE] STEP 1/3 submit: peer1 sends JOB_SUBMIT to master 'master' (job_id=peer1-0aafbabb, kind=count_primes, params={'start': 0, 'end': 2000000, 'tasks': 12})
+2026-11-11 08:26:46.364 [peer1] INFO    channel open peer1 -> master
+2026-11-11 08:26:46.364 [peer1] INFO    [BRIDGE] JOB_SUBMIT delivered for job peer1-0aafbabb; waiting for JOB_ACCEPTED from 'master'
+2026-11-11 08:26:46.365 [peer1] INFO    channel open master -> peer1
+2026-11-11 08:26:46.365 [peer1] INFO    [BRIDGE] STEP 2/3 accepted: master 'master' accepted job peer1-0aafbabb and split it into 12 task(s) for the workers (acknowledged in 0.001s). Job is now RUNNING on the cluster; waiting for JOB_RESULT.
+2026-11-11 08:26:48.375 [peer1] WARNING JOIN to peer2 failed: cannot reach peer2 at 127.0.0.1:6002: [Errno 61] Connection refused
+2026-11-11 08:26:48.999 [peer1] INFO    [BRIDGE] STEP 3/3 result: job peer1-0aafbabb (count_primes) finished with status 'SUCCESS'. Cluster time 2.634s for 12 task(s), round trip at peer1 2.635s. Result: 148933
+2026-11-11 08:26:52.912 [peer1] INFO    membership stopped: sent LEAVE to nobody
+2026-11-11 08:26:54.461 [peer1] INFO    stopped

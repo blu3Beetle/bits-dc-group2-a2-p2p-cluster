@@ -1,56 +1,52 @@
-2026-11-09 17:34:27.031 [peer1] INFO    [BRIDGE] peer1 ready: jobs go to master 'master', results come back here
-2026-11-09 17:34:27.032 [peer1] INFO    listening on 127.0.0.1:6001
-2026-11-09 17:34:27.032 [peer1] INFO    membership started: role=peer incarnation=1794245667025 watching=peer
-2026-11-09 17:34:27.032 [peer1] INFO    channel open peer2 -> peer1
-2026-11-09 17:34:27.032 [peer1] INFO    channel open peer1 -> peer2
-2026-11-09 17:34:27.032 [peer1] INFO    peer started, holding ['dataset-a', 'notes-peer1']
-2026-11-09 17:34:27.032 [peer1] INFO    MEMBER JOINED peer2 (peer). Alive peers: ['peer1', 'peer2']
-2026-11-09 17:34:27.032 [peer1] INFO    sent JOIN to peer2
-2026-11-09 17:34:27.033 [peer1] INFO    JOIN from peer2 (peer at 127.0.0.1:6002), sent JOIN_ACK
-2026-11-09 17:34:27.033 [peer1] INFO    JOIN_ACK from peer2: now tracking ['peer2']
-2026-11-09 17:34:27.033 [peer1] INFO    ANNOUNCE from peer2: holds ['dataset-b', 'notes-peer2']
-2026-11-09 17:34:27.034 [peer1] INFO    channel open peer3 -> peer1
-2026-11-09 17:34:27.034 [peer1] INFO    MEMBER JOINED peer3 (peer). Alive peers: ['peer1', 'peer2', 'peer3']
-2026-11-09 17:34:27.035 [peer1] INFO    channel open peer1 -> peer3
-2026-11-09 17:34:27.035 [peer1] INFO    JOIN from peer3 (peer at 127.0.0.1:6003), sent JOIN_ACK
-2026-11-09 17:34:27.035 [peer1] INFO    ANNOUNCE from peer3: holds ['dataset-c', 'notes-peer3']
-2026-11-09 17:34:27.041 [peer1] INFO    channel open peer4 -> peer1
-2026-11-09 17:34:27.041 [peer1] INFO    MEMBER JOINED peer4 (peer). Alive peers: ['peer1', 'peer2', 'peer3', 'peer4']
-2026-11-09 17:34:27.041 [peer1] INFO    channel open peer1 -> peer4
-2026-11-09 17:34:27.041 [peer1] INFO    JOIN from peer4 (peer at 127.0.0.1:6004), sent JOIN_ACK
-2026-11-09 17:34:27.041 [peer1] INFO    ANNOUNCE from peer4: holds ['dataset-d', 'notes-peer4']
-2026-11-09 17:34:27.108 [peer1] INFO    channel open peer5 -> peer1
-2026-11-09 17:34:27.108 [peer1] INFO    MEMBER JOINED peer5 (peer). Alive peers: ['peer1', 'peer2', 'peer3', 'peer4', 'peer5']
-2026-11-09 17:34:27.108 [peer1] INFO    channel open peer1 -> peer5
-2026-11-09 17:34:27.108 [peer1] INFO    JOIN from peer5 (peer at 127.0.0.1:6005), sent JOIN_ACK
-2026-11-09 17:34:27.109 [peer1] INFO    ANNOUNCE from peer5: holds ['notes-peer5']
-2026-11-09 17:34:27.166 [peer1] INFO    ANNOUNCE from peer5: holds ['dataset-b', 'notes-peer5']
-2026-11-09 17:34:27.166 [peer1] INFO    channel closed peer2 -> peer1
-2026-11-09 17:34:27.166 [peer1] WARNING MEMBER FAILED peer2 (peer): crashed or silent, last heard 0.1s ago. Alive peers: ['peer1', 'peer3', 'peer4', 'peer5']
-2026-11-09 17:34:27.166 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer2'] held by peer2 (DEAD)
-2026-11-09 17:34:27.222 [peer1] INFO    channel open peer6 -> peer1
-2026-11-09 17:34:27.222 [peer1] INFO    MEMBER JOINED peer6 (peer). Alive peers: ['peer1', 'peer3', 'peer4', 'peer5', 'peer6']
-2026-11-09 17:34:27.222 [peer1] INFO    channel open peer1 -> peer6
-2026-11-09 17:34:27.223 [peer1] INFO    JOIN from peer6 (peer at 127.0.0.1:6006), sent JOIN_ACK
-2026-11-09 17:34:27.223 [peer1] INFO    ANNOUNCE from peer6: holds ['notes-peer6']
-2026-11-09 17:34:27.281 [peer1] INFO    ANNOUNCE from peer6: holds ['dataset-b', 'notes-peer6']
-2026-11-09 17:34:27.281 [peer1] INFO    LEAVE from peer4: graceful shutdown
-2026-11-09 17:34:27.281 [peer1] WARNING MEMBER LEFT peer4 (peer): graceful leave. Alive peers: ['peer1', 'peer3', 'peer5', 'peer6']
-2026-11-09 17:34:27.281 [peer1] INFO    REGISTRY dropped ['dataset-d', 'notes-peer4'] held by peer4 (LEFT)
-2026-11-09 17:34:27.282 [peer1] INFO    channel closed peer4 -> peer1
-2026-11-09 17:34:27.334 [peer1] INFO    QUERY c9b3ba8953 forwarded to ['peer3', 'peer5'] (ttl=2)
-2026-11-09 17:34:30.339 [peer1] INFO    LEAVE from peer5: graceful shutdown
-2026-11-09 17:34:30.339 [peer1] WARNING MEMBER LEFT peer5 (peer): graceful leave. Alive peers: ['peer1', 'peer3', 'peer6']
-2026-11-09 17:34:30.339 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer5'] held by peer5 (LEFT)
-2026-11-09 17:34:30.340 [peer1] INFO    channel closed peer5 -> peer1
-2026-11-09 17:34:30.341 [peer1] INFO    LEAVE from peer6: graceful shutdown
-2026-11-09 17:34:30.341 [peer1] WARNING MEMBER LEFT peer6 (peer): graceful leave. Alive peers: ['peer1', 'peer3']
-2026-11-09 17:34:30.341 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer6'] held by peer6 (LEFT)
-2026-11-09 17:34:30.342 [peer1] INFO    channel closed peer6 -> peer1
-2026-11-09 17:34:30.342 [peer1] INFO    shutting down
-2026-11-09 17:34:30.343 [peer1] INFO    membership stopped: sent LEAVE to ['peer3']
-2026-11-09 17:34:30.343 [peer1] INFO    LEAVE from peer3: graceful shutdown
-2026-11-09 17:34:30.343 [peer1] WARNING MEMBER LEFT peer3 (peer): graceful leave. Alive peers: ['peer1']
-2026-11-09 17:34:30.343 [peer1] WARNING no live peers left, will JOIN again
-2026-11-09 17:34:30.343 [peer1] INFO    REGISTRY dropped ['dataset-c', 'notes-peer3'] held by peer3 (LEFT)
-2026-11-09 17:34:30.344 [peer1] INFO    stopped
+2026-11-11 08:26:55.174 [peer1] INFO    [BRIDGE] peer1 ready: jobs go to master 'master', results come back here
+2026-11-11 08:26:55.174 [peer1] INFO    listening on 127.0.0.1:6001
+2026-11-11 08:26:55.174 [peer1] INFO    membership started: role=peer incarnation=1794365815165 watching=peer
+2026-11-11 08:26:55.175 [peer1] INFO    channel open peer3 -> peer1
+2026-11-11 08:26:55.175 [peer1] INFO    MEMBER JOINED peer3 (peer). Alive peers: ['peer1', 'peer3']
+2026-11-11 08:26:55.175 [peer1] INFO    channel open peer1 -> peer2
+2026-11-11 08:26:55.175 [peer1] INFO    channel open peer2 -> peer1
+2026-11-11 08:26:55.175 [peer1] INFO    peer started, holding ['dataset-a', 'notes-peer1']
+2026-11-11 08:26:55.175 [peer1] INFO    sent JOIN to peer2
+2026-11-11 08:26:55.175 [peer1] INFO    channel open peer1 -> peer3
+2026-11-11 08:26:55.175 [peer1] INFO    JOIN from peer3 (peer at 127.0.0.1:6003), sent JOIN_ACK
+2026-11-11 08:26:55.175 [peer1] INFO    MEMBER JOINED peer2 (peer). Alive peers: ['peer1', 'peer2', 'peer3']
+2026-11-11 08:26:55.176 [peer1] INFO    channel open peer4 -> peer1
+2026-11-11 08:26:55.176 [peer1] INFO    JOIN from peer2 (peer at 127.0.0.1:6002), sent JOIN_ACK
+2026-11-11 08:26:55.176 [peer1] INFO    ANNOUNCE from peer2: holds ['dataset-b', 'notes-peer2']
+2026-11-11 08:26:55.176 [peer1] INFO    JOIN_ACK from peer2: now tracking ['peer2', 'peer3']
+2026-11-11 08:26:55.176 [peer1] INFO    MEMBER JOINED peer4 (peer). Alive peers: ['peer1', 'peer2', 'peer3', 'peer4']
+2026-11-11 08:26:55.176 [peer1] INFO    channel open peer1 -> peer4
+2026-11-11 08:26:55.176 [peer1] INFO    JOIN from peer4 (peer at 127.0.0.1:6004), sent JOIN_ACK
+2026-11-11 08:26:55.176 [peer1] INFO    ANNOUNCE from peer3: holds ['dataset-c', 'notes-peer3']
+2026-11-11 08:26:55.176 [peer1] INFO    ANNOUNCE from peer4: holds ['dataset-d', 'notes-peer4']
+2026-11-11 08:26:55.227 [peer1] INFO    channel open peer5 -> peer1
+2026-11-11 08:26:55.227 [peer1] INFO    MEMBER JOINED peer5 (peer). Alive peers: ['peer1', 'peer2', 'peer3', 'peer4', 'peer5']
+2026-11-11 08:26:55.227 [peer1] INFO    channel open peer1 -> peer5
+2026-11-11 08:26:55.227 [peer1] INFO    JOIN from peer5 (peer at 127.0.0.1:6005), sent JOIN_ACK
+2026-11-11 08:26:55.228 [peer1] INFO    ANNOUNCE from peer5: holds ['notes-peer5']
+2026-11-11 08:26:55.284 [peer1] INFO    ANNOUNCE from peer5: holds ['dataset-b', 'notes-peer5']
+2026-11-11 08:26:55.285 [peer1] INFO    channel closed peer2 -> peer1
+2026-11-11 08:26:55.285 [peer1] WARNING MEMBER FAILED peer2 (peer): crashed or silent, last heard 0.1s ago. Alive peers: ['peer1', 'peer3', 'peer4', 'peer5']
+2026-11-11 08:26:55.285 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer2'] held by peer2 (DEAD)
+2026-11-11 08:26:55.342 [peer1] INFO    channel open peer6 -> peer1
+2026-11-11 08:26:55.342 [peer1] INFO    MEMBER JOINED peer6 (peer). Alive peers: ['peer1', 'peer3', 'peer4', 'peer5', 'peer6']
+2026-11-11 08:26:55.343 [peer1] INFO    channel open peer1 -> peer6
+2026-11-11 08:26:55.343 [peer1] INFO    JOIN from peer6 (peer at 127.0.0.1:6006), sent JOIN_ACK
+2026-11-11 08:26:55.343 [peer1] INFO    ANNOUNCE from peer6: holds ['notes-peer6']
+2026-11-11 08:26:55.402 [peer1] INFO    ANNOUNCE from peer6: holds ['dataset-b', 'notes-peer6']
+2026-11-11 08:26:55.403 [peer1] INFO    LEAVE from peer4: graceful shutdown
+2026-11-11 08:26:55.403 [peer1] WARNING MEMBER LEFT peer4 (peer): graceful leave. Alive peers: ['peer1', 'peer3', 'peer5', 'peer6']
+2026-11-11 08:26:55.403 [peer1] INFO    REGISTRY dropped ['dataset-d', 'notes-peer4'] held by peer4 (LEFT)
+2026-11-11 08:26:55.403 [peer1] INFO    channel closed peer4 -> peer1
+2026-11-11 08:26:55.460 [peer1] INFO    QUERY b314709982 forwarded to ['peer3', 'peer5'] (ttl=2)
+2026-11-11 08:26:58.466 [peer1] INFO    LEAVE from peer5: graceful shutdown
+2026-11-11 08:26:58.467 [peer1] WARNING MEMBER LEFT peer5 (peer): graceful leave. Alive peers: ['peer1', 'peer3', 'peer6']
+2026-11-11 08:26:58.467 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer5'] held by peer5 (LEFT)
+2026-11-11 08:26:58.467 [peer1] INFO    channel closed peer5 -> peer1
+2026-11-11 08:26:58.468 [peer1] INFO    LEAVE from peer6: graceful shutdown
+2026-11-11 08:26:58.468 [peer1] WARNING MEMBER LEFT peer6 (peer): graceful leave. Alive peers: ['peer1', 'peer3']
+2026-11-11 08:26:58.468 [peer1] INFO    channel closed peer6 -> peer1
+2026-11-11 08:26:58.469 [peer1] INFO    REGISTRY dropped ['dataset-b', 'notes-peer6'] held by peer6 (LEFT)
+2026-11-11 08:26:58.469 [peer1] INFO    shutting down
+2026-11-11 08:26:58.469 [peer1] INFO    membership stopped: sent LEAVE to ['peer3']
+2026-11-11 08:26:58.469 [peer1] INFO    stopped

@@ -260,10 +260,22 @@ def cluster(demo):
     demo.measure("worker4 known by the master", ["master"], r"MEMBER JOINED worker4", t,
                  "includes process start-up")
 
-    demo.step("3. REMOVE by crash: kill -9 worker2")
+    demo.step("3. REMOVE by crash, mid-job: peer1 submits a job, then kill -9 worker2 while it runs a task")
+    peer1 = demo.start_local_peer("peer1", None)
+    submitted = time.time()
+    job_id = peer1.bridge.submit("count_primes", {"start": 0, "end": 2_000_000, "tasks": 12})
+    demo.say("   peer1 submitted job {}: count_primes over [0, 2,000,000) in 12 tasks".format(job_id))
+    demo.wait_all(["master"], r"DISPATCH \S+ -> worker2 ", submitted)
+    time.sleep(0.2)                                   # let worker2 get into its task
     t = demo.signal("worker2", signal.SIGKILL, "kill -9")
     demo.measure("worker2 crash detected by the master", ["master"], r"MEMBER FAILED worker2", t,
                  "TCP channel closed")
+    demo.measure("worker2's unfinished task requeued", ["master"], r"REQUEUE \d+ task\(s\) of lost worker worker2", t)
+    job = peer1.bridge.jobs[job_id]
+    finished = job["done"].wait(60)
+    demo.record("job finished despite the crash", time.time() - submitted if finished else None,
+                "status {}, result {}".format(job["status"], job["result"]) if finished else "no result",
+                missing="did not finish")
 
     demo.step("4. REMOVE by hang: SIGSTOP worker1 (frozen, socket still open)")
     t = demo.signal("worker1", signal.SIGSTOP, "SIGSTOP")
@@ -284,9 +296,9 @@ def cluster(demo):
     time.sleep(0.5)
     alive = [l for l in demo.log_lines("master") if "Alive workers" in l]
     demo.say("   master: {}".format(alive[-1].split("Alive workers: ")[-1] if alive else "?"))
-    lost = [l.split("] ")[-1] for l in demo.log_lines("master") if "requeue" in l.lower()]
-    demo.say("   requeue calls logged by the master: {}".format(len(lost) or "none yet "
-             "(requeue_worker_tasks is Kashif's part)"))
+    for line in demo.log_lines("master"):
+        if "REQUEUE" in line or "nothing to requeue" in line:
+            demo.say("   master: " + line.split("] ", 1)[-1].split(None, 1)[-1])
 
 
 SCENARIOS = {"p2p": p2p, "cluster": cluster}
