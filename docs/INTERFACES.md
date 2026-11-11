@@ -8,7 +8,7 @@ Each file below is a stub: the classes and handlers exist, and you fill in the l
 
 | Owner | Files | Part |
 |---|---|---|
-| Anirudh | `common/`, `config/`, `docs/GROUP-2-DRAFT.md` | Shared layer, repo, submission doc, recording |
+| Anirudh | `common/`, `config/`, `docs/INTERFACES.md` | Shared layer, repo, submission doc, recording |
 | Kashif | `cluster/master.py` | Task queue, dispatch, result collection, parallel proof |
 | Abhirup | `cluster/worker.py` | Task execution, result return |
 | Sri Harsha | `peer/peer_node.py` | P2P messaging, discovery, resource registry |

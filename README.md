@@ -58,10 +58,10 @@ Request flow:
 | `cluster/worker.py` | Task execution and result return | Abhirup |
 | `joinleave/service.py` | Node join, heartbeat, leave and failure detection, used by every node | Sohail |
 | `demo/join_leave_demo.py` | Scripted node addition and removal demo with measured timings | Sohail |
-| `tests/` | Unit and integration tests | Sohail (common: Anirudh, peer: Sri Harsha) |
+| `demo/parallel_proof.py` | Scripted speedup run with 1, 2 and 3 workers and a worker killed mid-job | Kashif |
+| `tests/` | Unit and integration tests | Sohail (common: Anirudh, peer: Sri Harsha, master: Kashif) |
 | `docs/INTERFACES.md` | Team contract: message formats and how the parts fit | Anirudh |
-| `docs/GROUP-2-DRAFT.md` | Draft of the submission document | Anirudh |
-| `outputs/` | Logs and screenshots kept as evidence | All |
+| `outputs/logs/` | Logs and summaries from the scripted demos, kept as evidence | All |
 
 ## Running the system
 
@@ -214,6 +214,7 @@ python3 -m unittest tests.test_joinleave -v
 | `tests/test_joinleave.py` | Join, late join on a new port, graceful leave, crash, silent node, restart, master restart, 4-peer discovery, late peer, seed peer crash |
 | `tests/test_peer.py` | Peer discovery, gossip, resource registry, query and fetch, replication, runtime sharing |
 | `tests/test_worker.py` | Worker task kinds, failures, long tasks not blocking, crash during a task |
+| `tests/test_master.py` | Job splitting, dispatch to idle workers, result merging, requeue on worker loss, retries, duplicate results |
 | `tests/test_common_membership.py` | Membership table rules: ALIVE, DEAD, LEFT and incarnations |
 | `tests/test_common_messages.py` | Message schema validation |
 | `tests/test_common_transport.py` | TCP framing, ordering, reconnects and disconnect reporting |
