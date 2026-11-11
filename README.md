@@ -109,9 +109,9 @@ Logs go to the terminal and to `logs/<id>.log`. Copy the ones you want as eviden
 
 ### On the cloud lab
 
-Ports are closed between the lab nodes, so the whole system runs on **one lab VM**, with every node as its own process on `127.0.0.1`. The lab VM's IP address changes each time the lab is stopped and started. That has no effect on this single-VM setup, because nothing uses the external IP.
+The demo ran on **three lab VMs** using `config/nodes.multinode.json` (VM1: master, peer1, peer2, worker3. VM2: peer3, peer4, worker1. VM3: worker2). Each VM's firewalld blocks the node ports by default, so first run `sudo firewall-cmd --add-port=6000-6300/tcp` on every VM. The rule is lost on reboot.
 
-`config/nodes.multinode.json` is provided for running across machines if the ports are opened. It has not been run that way. To use it, put the current lab IPs into the file each time the lab restarts, copy the repository to each machine, and start every node with `--config config/nodes.multinode.json`.
+The lab VM IPs change each time the lab is stopped and started, so the IPs in that file are masked (`10.3.20.xxx` and so on). Before a run, put each VM's current IP (`hostname -I`) in place of the masked value, pull the repository on every VM, and start each node with `export DC_CONFIG=config/nodes.multinode.json`. To run everything on one machine instead, leave `DC_CONFIG` unset and every node uses `127.0.0.1`.
 
 ## Adding and removing nodes
 

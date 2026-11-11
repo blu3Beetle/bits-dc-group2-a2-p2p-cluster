@@ -19,7 +19,7 @@ All four peers run the same `peer/peer_node.py` with a different `--id`.
 
 ## Running
 
-Everything runs on one lab VM, because ports are closed between lab nodes. Each node is a separate process in its own CLI, started from the repo root:
+By default every node runs on one machine (`config/nodes.json`, all on 127.0.0.1). For three machines, see "Running across lab nodes" below. Each node is a separate process in its own CLI, started from the repo root:
 
 ```bash
 python3 -m cluster.master --id master
@@ -49,9 +49,9 @@ python3 -m unittest discover -s tests -t .
 
 ## Running across lab nodes
 
-`config/nodes.multinode.json` maps the same nodes onto three machines. The code is identical, and only the config changes. It is for use if the lab ports are ever opened, and it has not been run across separate machines.
+`config/nodes.multinode.json` maps the same nodes onto three machines. The code is identical, and only the config changes. The demo ran this way on three lab VMs, after opening ports 6000-6300 in each VM's firewalld.
 
-1. Replace the IPs in that file with the current lab IPs. The ones there are from Assignment 1.
+1. Replace the masked IPs in that file (`10.3.20.xxx` and so on) with the current lab IPs, since they change when the lab restarts.
 2. Copy the repo and the file to all three machines.
 3. Start each node on the machine that file assigns it to:
 
